@@ -1,0 +1,1348 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Formas de Corrosión</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+/* Distribución: riel lateral de temas con avance, columna de lectura a la derecha, color propio por proceso. Un solo tema claro, por decisión del autor. */
+:root{
+  color-scheme:light;
+  --bg:#f3f6f5;
+  --card:#ffffff;
+  --ink:#10222b;
+  --muted:#52666f;
+  --line:#dbe4e2;
+  --line2:#ecf1ef;
+  --ok:#17803f; --ok-bg:#e5f6ec; --ok-line:#a9dcbc;
+  --err:#c8362b; --err-bg:#fdeceb; --err-line:#f1b9b4;
+  --warn:#8a5200; --warn-bg:#fff5de; --warn-line:#f0d28f;
+  --info:#1b4f8a; --info-bg:#e8f1fb; --info-line:#bcd5f0;
+  --f-head:'Barlow Semi Condensed','Segoe UI',system-ui,sans-serif;
+  --f-body:'Source Sans 3','Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --r:14px; --r2:10px;
+  --shadow:0 1px 2px rgba(16,34,43,.05),0 6px 22px rgba(16,34,43,.06);
+  --rail:272px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+button,input{font-family:inherit;font-size:inherit;color:inherit}
+.app{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;height:100vh;max-height:100dvh;overflow-y:auto;background:var(--card);border-right:1px solid var(--line);padding:22px 14px 18px max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:14px}
+.brand{font-family:var(--f-head);font-weight:700;font-size:1.32rem;line-height:1.12;letter-spacing:.005em;color:var(--ink);padding:0 6px}
+.tabs{display:flex;flex-direction:column;gap:4px}
+.tab{display:flex;align-items:center;gap:11px;text-align:left;border:1.5px solid transparent;background:transparent;border-radius:var(--r2);padding:9px 10px;cursor:pointer;font-family:var(--f-head);font-weight:600;font-size:1.03rem;line-height:1.15;color:var(--muted);transition:background .15s,border-color .15s,color .15s}
+.tab .dot{flex:none;width:12px;height:12px;border-radius:4px;background:var(--ac)}
+.tab .tl{flex:1;min-width:0}
+.tab .cnt{flex:none;font-size:.82rem;font-variant-numeric:tabular-nums;color:var(--muted);background:var(--line2);border-radius:20px;padding:1px 8px;font-weight:600}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab[aria-selected=true]{background:var(--soft);border-color:var(--ac);color:var(--ink)}
+.tab[aria-selected=true] .cnt{background:var(--card)}
+.tab:focus-visible,.btn:focus-visible,.opt:focus-visible,.mi:focus-visible,.chipbtn:focus-visible,.linkcard:focus-visible,.hintbtn:focus-visible,.blank:focus-visible{outline:3px solid #1971c2;outline-offset:2px}
+.prog{margin-top:auto;padding:0 6px}
+.prog .bar{height:8px;border-radius:20px;background:var(--line2);overflow:hidden}
+.prog .fill{height:100%;width:0;background:linear-gradient(90deg,#0b7285,#2b8a3e);border-radius:20px;transition:width .5s}
+.prog .plab{font-size:.88rem;color:var(--muted);margin-top:6px;font-variant-numeric:tabular-nums}
+.credit{font-size:.84rem;color:var(--muted);padding:0 6px}
+.credit b{color:var(--ink);font-weight:700}
+main{min-width:0;padding:34px max(24px,env(safe-area-inset-right,0px)) 70px 40px}
+.module{display:none;max-width:900px;margin:0 auto 0 0;--ac:#0b7285;--soft:#e3f5f8;--ink2:#085666}
+.module.show{display:block;animation:rise .35s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.mhead{padding:6px 0 18px}
+.mhead h1{font-family:var(--f-head);font-weight:700;font-size:clamp(2rem,4.4vw,2.9rem);line-height:1.05;margin:0 0 12px;color:var(--ink2);text-wrap:balance;letter-spacing:-.005em}
+.lead{font-size:1.1rem;color:var(--muted);max-width:68ch;margin:0}
+h2.sh{display:flex;align-items:center;gap:11px;font-family:var(--f-head);font-weight:700;font-size:1.5rem;line-height:1.15;margin:40px 0 10px;color:var(--ink);text-wrap:balance}
+h2.sh::before{content:"";flex:none;width:12px;height:12px;border-radius:4px;background:var(--ac)}
+p.tx{margin:10px 0;max-width:70ch}
+p.tx b,li b,td b{color:var(--ink2);font-weight:700}
+ul.ls{margin:10px 0;padding-left:1.2em;max-width:70ch}
+ul.ls li{margin:5px 0;padding-left:.2em}
+ul.ls li::marker{color:var(--ac)}
+.note{margin:16px 0;padding:13px 16px;border-radius:var(--r2);background:var(--soft);border:1px solid var(--line);max-width:74ch;font-size:.98rem}
+.note .nt{display:inline-block;font-family:var(--f-head);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink2);margin-right:8px}
+.note.warn{background:var(--warn-bg);border-color:var(--warn-line)}
+.note.warn .nt{color:var(--warn)}
+.note.info{background:var(--info-bg);border-color:var(--info-line)}
+.note.info .nt{color:var(--info)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r2);margin:14px 0;background:var(--card)}
+table.tb{border-collapse:collapse;width:100%;font-size:.96rem;min-width:520px}
+table.tb th{background:var(--ac);color:#fff;text-align:left;padding:9px 12px;font-family:var(--f-head);font-weight:600;letter-spacing:.02em;font-size:.98rem}
+table.tb td{padding:9px 12px;border-top:1px solid var(--line2);vertical-align:top}
+table.tb tr:nth-child(even) td{background:#f8fbfa}
+.fig{margin:18px 0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--shadow)}
+.fig img{margin:0 auto;border-radius:6px;cursor:zoom-in;max-height:520px;width:auto}
+.fig .fc{font-size:.9rem;color:var(--muted);text-align:center;margin-top:9px}
+.figs2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.figs2 .fig{margin:0}
+.linkcard{display:flex;align-items:center;gap:16px;margin:18px 0;padding:16px 18px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);text-decoration:none;color:inherit;max-width:640px;transition:transform .15s,border-color .15s}
+.linkcard:hover{transform:translateY(-2px);border-color:var(--ac)}
+.linkcard .play{flex:none;width:54px;height:54px;border-radius:14px;background:var(--ac);display:grid;place-items:center}
+.linkcard .play i{display:block;width:0;height:0;border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.linkcard .lt{font-family:var(--f-head);font-weight:700;font-size:1.15rem;line-height:1.2}
+.linkcard .ld{font-size:.93rem;color:var(--muted);margin-top:2px}
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.ex.done{border-color:var(--ac)}
+.exh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.bdg{font-family:var(--f-head);font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:6px;background:var(--soft);color:var(--ink2)}
+.bdg.t-vf{background:#e8eefc;color:#2a46a6}
+.bdg.t-fill{background:#fdebf2;color:#a3204f}
+.bdg.t-match{background:#efe8fb;color:#5b34b0}
+.bdg.t-order{background:#e3f6f0;color:#0d6a52}
+.bdg.t-open{background:#e6f4fa;color:#0b5f80}
+.ta{display:block;width:100%;max-width:76ch;margin-top:10px;padding:10px 13px;border:1px solid var(--line);border-radius:var(--r2);font:inherit;font-size:1rem;line-height:1.5;background:#fff;color:inherit;resize:vertical}
+.ta:focus{outline:2px solid var(--ac);outline-offset:1px}
+.mdl{display:none;margin-top:14px;padding:14px 16px;border-radius:var(--r2);background:#f3f9fc;border:1px solid #bfdcea;max-width:76ch}
+.mdl.show{display:block;animation:rise .3s both}
+.mdl .mt{font-family:var(--f-head);font-weight:700;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:#0b5f80;margin-bottom:6px}
+.mdl .mb p{margin:0 0 8px}.mdl .mb ul{margin:4px 0 8px 18px;padding:0}.mdl .mb li{margin:2px 0}
+.chk{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:5px}
+.chk label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.chk input{margin-top:5px;accent-color:var(--ac)}
+.mdl .src{display:block;margin-top:10px;font-size:.86rem;opacity:.85}
+.bdg.t-sort{background:#fff1d9;color:#8a5200}
+.exn{font-size:.88rem;color:var(--muted);font-weight:600}
+.eq{font-weight:600;font-size:1.06rem;margin:6px 0 4px;max-width:72ch}
+.ectx{margin:8px 0;padding:10px 14px;border-radius:var(--r2);background:var(--bg);border:1px solid var(--line2);font-size:.97rem;max-width:72ch}
+.eimg{margin:10px 0;max-width:520px}
+.eimg img{border:1px solid var(--line);border-radius:8px;background:#fff;cursor:zoom-in;max-height:300px;width:auto}
+.opts{display:flex;flex-direction:column;gap:9px;margin-top:12px}
+.opts.vf{flex-direction:row;flex-wrap:wrap}
+.opts.vf .opt{flex:1 1 160px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;padding:11px 14px;background:var(--card);border:1.5px solid var(--line);border-radius:var(--r2);cursor:pointer;transition:border-color .12s,background .12s,transform .12s}
+.opt:hover{border-color:var(--ac);background:var(--soft)}
+.opt .mk{flex:none;width:26px;height:26px;border-radius:7px;border:1.5px solid var(--line);display:grid;place-items:center;font-family:var(--f-head);font-weight:700;font-size:.95rem;color:var(--muted);background:var(--card)}
+.opt .ot{flex:1;min-width:0}
+.opt.sel{border-color:var(--ac);background:var(--soft)}
+.opt.sel .mk{background:var(--ac);border-color:var(--ac);color:#fff}
+.opt.right{border-color:var(--ok);background:var(--ok-bg)}
+.opt.right .mk{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--err);background:var(--err-bg)}
+.opt.wrong .mk{background:var(--err);border-color:var(--err);color:#fff}
+.opt.lock{pointer-events:none}
+.btn{appearance:none;border:0;border-radius:var(--r2);padding:10px 20px;font-family:var(--f-head);font-weight:600;font-size:1.02rem;letter-spacing:.02em;cursor:pointer;background:var(--ac);color:#fff;transition:filter .12s,transform .12s}
+.btn:hover{filter:brightness(.93)}
+.btn:disabled{opacity:.4;cursor:default;filter:none}
+.btn.ghost{background:transparent;color:var(--ink2);border:1.5px solid var(--line)}
+.btn.ghost:hover{background:var(--soft);filter:none}
+.brow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.hintbtn{border:1px solid var(--warn-line);background:var(--warn-bg);color:var(--warn);border-radius:20px;padding:3px 13px;font-size:.88rem;font-weight:600;cursor:pointer}
+.hintbox{display:none;margin-top:8px;padding:9px 13px;border-radius:var(--r2);background:var(--warn-bg);border:1px dashed var(--warn-line);color:var(--warn);font-size:.95rem}
+.hintbox.show{display:block}
+.fb{display:none;margin-top:14px;padding:13px 16px;border-radius:var(--r2);font-size:.99rem;max-width:76ch}
+.fb.show{display:block;animation:rise .3s both}
+.fb.good{background:var(--ok-bg);border:1px solid var(--ok-line);color:#0f4f27}
+.fb.bad{background:var(--err-bg);border:1px solid var(--err-line);color:#7d211a}
+.fb.mid{background:var(--warn-bg);border:1px solid var(--warn-line);color:#5f3800}
+.fb b.v{font-family:var(--f-head);font-size:1.05rem;letter-spacing:.02em}
+.fb .src{display:block;margin-top:8px;font-size:.86rem;opacity:.85}
+.fsent{font-size:1.06rem;line-height:2.5;margin:12px 0;max-width:74ch}
+.blank{display:inline-block;min-width:96px;max-width:100%;padding:3px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--soft);text-align:center;font-weight:600;color:var(--ink2);font-family:var(--f-body)}
+.blank.ok{border-color:var(--ok);background:var(--ok-bg);color:var(--ok)}
+.blank.no{border-color:var(--err);background:var(--err-bg);color:var(--err);animation:shk .35s}
+@keyframes shk{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.bank span{background:#efe8fb;color:#5b34b0;border-radius:20px;padding:3px 12px;font-size:.93rem;font-weight:600}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:12px}
+.mcol h4{margin:0 0 8px;font-family:var(--f-head);font-size:.84rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.mi{display:flex;align-items:center;gap:10px;width:100%;text-align:left;margin-bottom:8px;padding:10px 12px;background:var(--card);border:1.5px solid var(--line);border-radius:var(--r2);cursor:pointer;transition:border-color .12s,background .12s}
+.mi:hover{border-color:var(--ac)}
+.mi.sel{border-color:#1971c2;background:var(--info-bg)}
+.mi.done{border-color:var(--ok);background:var(--ok-bg);pointer-events:none}
+.mi.miss{border-color:var(--err);background:var(--err-bg);animation:shk .35s}
+.mi .sw{flex:none;width:22px;height:22px;border-radius:6px;border:1px solid rgba(0,0,0,.25)}
+.mi .tg{flex:1;min-width:0}
+.ochips{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+.chipbtn{border:1.5px solid var(--line);background:var(--card);border-radius:var(--r2);padding:8px 14px;font-weight:600;cursor:pointer;transition:border-color .12s,background .12s}
+.chipbtn:hover{border-color:var(--ac);background:var(--soft)}
+.chipbtn.used{border-color:var(--ok);background:var(--ok-bg);pointer-events:none}
+.chipbtn .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ok);color:#fff;font-size:.82rem;margin-right:8px;font-family:var(--f-head)}
+.chipbtn.miss{border-color:var(--err);background:var(--err-bg);animation:shk .35s}
+.srow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line2)}
+.srow:first-of-type{border-top:0}
+.sbk{display:flex;gap:6px;flex-wrap:wrap}
+.sbk button{border:1.5px solid var(--line);background:var(--card);border-radius:8px;padding:4px 11px;cursor:pointer;font-family:var(--f-head);font-weight:600;font-size:.95rem;color:var(--muted)}
+.sbk button:hover{border-color:var(--ac)}
+.sbk button.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.srow.ok .st{color:var(--ok)}
+.srow.no .st{color:var(--err)}
+.srow.ok .sbk button.on{background:var(--ok);border-color:var(--ok)}
+.srow.no .sbk button.on{background:var(--err);border-color:var(--err)}
+.code{display:inline-flex;flex-wrap:wrap;gap:3px;font-family:var(--f-head);font-weight:700;font-size:1.9rem;letter-spacing:.04em;margin:4px 0}
+.code span{padding:0 5px;border-radius:6px;color:var(--muted)}
+.code span.hl{background:var(--ac);color:#fff}
+.swt{display:inline-block;width:14px;height:14px;border-radius:4px;border:1px solid rgba(0,0,0,.3);margin-right:7px;vertical-align:-2px}
+.sw-row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.sw-row .sc{display:flex;align-items:center;gap:7px;font-size:.92rem;font-weight:600}
+.sw-row .sc i{width:20px;height:20px;border-radius:6px;display:inline-block;border:1px solid rgba(0,0,0,.25)}
+.simtop{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 0;margin-bottom:6px;border-bottom:1px solid var(--line)}
+.simtop .cn{font-family:var(--f-head);font-weight:600;font-size:1.1rem}
+.sq{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 22px;margin:14px 0;box-shadow:var(--shadow)}
+.sq .qn{font-family:var(--f-head);font-weight:700;font-size:.9rem;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.sq .qt{font-weight:600;font-size:1.06rem;margin:4px 0 2px;max-width:72ch}
+.res{display:none;margin:22px 0;padding:24px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
+.res.show{display:block;animation:rise .4s both}
+.ring{--p:0;width:120px;height:120px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--ac) calc(var(--p)*1%),var(--line2) 0)}
+.ring b{width:94px;height:94px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-family:var(--f-head);font-size:1.8rem;font-weight:700}
+.rtop{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.rl{margin:14px 0 0;display:grid;gap:9px}
+.rr{display:grid;grid-template-columns:minmax(120px,230px) 1fr 52px;gap:12px;align-items:center;font-size:.96rem}
+.rr .rb{height:10px;border-radius:20px;background:var(--line2);overflow:hidden}
+.rr .rf{height:100%;border-radius:20px;background:var(--ok)}
+.rr .rf.mid{background:#e08a00}.rr .rf.low{background:var(--err)}
+.rr .rp{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.foot{padding:26px max(16px,env(safe-area-inset-right,0px)) 40px 40px;font-size:.9rem;color:var(--muted)}
+.foot b{color:var(--ink)}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(16,34,43,.78);display:none;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) 16px 16px;cursor:zoom-out}
+.lb.show{display:flex}
+.lb img{max-width:100%;max-height:100%;background:#fff;border-radius:8px}
+@media(max-width:860px){
+  .app{display:block}
+  .rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;height:auto;max-height:none;overflow:visible;flex-direction:column;gap:6px;padding:10px max(14px,env(safe-area-inset-right,0px)) 8px max(14px,env(safe-area-inset-left,0px));border-right:0;border-bottom:1px solid var(--line)}
+  .brand{font-size:1.1rem;padding:0}
+  .tabs{flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:4px;scrollbar-width:thin}
+  .tab{flex:none;padding:7px 11px;font-size:.98rem;white-space:nowrap}
+  .prog,.credit{display:none}
+  main{padding:20px max(16px,env(safe-area-inset-right,0px)) 50px max(16px,env(safe-area-inset-left,0px))}
+  .foot{padding-left:max(16px,env(safe-area-inset-left,0px))}
+  .mgrid{grid-template-columns:1fr;gap:6px}
+  .figs2{grid-template-columns:1fr}
+  .rr{grid-template-columns:100px 1fr 48px}
+  .ex,.sq{padding:16px 15px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+<div id="gate">
+  <style>
+    #gate{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;
+      background:linear-gradient(160deg,#ff8fab 0%,#ff4d6d 38%,#c9184a 100%);
+      font-family:'Barlow Semi Condensed','Segoe UI',system-ui,sans-serif;}
+    #gate .hearts{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+    #gate .heart{position:absolute;bottom:-60px;font-size:28px;opacity:.85;animation:floatUp linear infinite;filter:drop-shadow(0 2px 6px rgba(0,0,0,.15))}
+    @keyframes floatUp{
+      0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}
+      8%{opacity:.9}
+      50%{transform:translateY(-55vh) translateX(var(--drift,20px)) rotate(15deg)}
+      100%{transform:translateY(-115vh) translateX(calc(var(--drift,20px)*-1)) rotate(-10deg);opacity:0}
+    }
+    #gate .card{position:relative;z-index:2;max-width:480px;width:calc(100% - 40px);background:#fff;border-radius:22px;
+      padding:34px 30px 30px;box-shadow:0 20px 60px rgba(120,10,40,.45);text-align:center;
+      animation:pop .5s cubic-bezier(.26,1.4,.4,1) both}
+    @keyframes pop{from{opacity:0;transform:scale(.85) translateY(10px)}to{opacity:1;transform:none}}
+    #gate .card.shake{animation:shake .4s}
+    @keyframes shake{20%{transform:translateX(-10px)}40%{transform:translateX(9px)}60%{transform:translateX(-7px)}80%{transform:translateX(5px)}100%{transform:translateX(0)}}
+    #gate .top{font-size:2.6rem;line-height:1;margin-bottom:6px}
+    #gate h1{font-family:inherit;font-weight:700;font-size:1.5rem;color:#c9184a;margin:4px 0 6px;letter-spacing:-.01em}
+    #gate .sub{font-family:'Source Sans 3','Segoe UI',system-ui,sans-serif;color:#7a1438;font-size:.98rem;margin:0 0 18px;line-height:1.45}
+    #gate .riddle{font-family:inherit;font-weight:700;font-size:1.22rem;color:#3b0a1e;background:#fff0f3;border:1.5px dashed #ffb3c6;border-radius:14px;padding:14px 16px;margin:0 0 18px;line-height:1.3}
+    #gate input{width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid #ffc2d1;font-size:1.05rem;
+      font-family:'Source Sans 3','Segoe UI',system-ui,sans-serif;text-align:center;outline:none;color:#3b0a1e;background:#fff8f9}
+    #gate input:focus{border-color:#ff4d6d}
+    #gate .hint{font-family:'Source Sans 3','Segoe UI',system-ui,sans-serif;font-size:.84rem;color:#a4133c;margin:8px 0 0}
+    #gate button{margin-top:16px;width:100%;appearance:none;border:0;border-radius:12px;padding:13px 18px;
+      font-family:inherit;font-weight:700;font-size:1.08rem;letter-spacing:.02em;cursor:pointer;color:#fff;
+      background:linear-gradient(135deg,#ff4d6d,#c9184a);box-shadow:0 8px 20px rgba(201,24,74,.35);transition:transform .12s,filter .12s}
+    #gate button:hover{filter:brightness(1.06);transform:translateY(-1px)}
+    #gate .msg{min-height:22px;margin-top:12px;font-family:'Source Sans 3','Segoe UI',system-ui,sans-serif;font-weight:700;font-size:.95rem}
+    #gate .msg.bad{color:#c9184a}
+    #gate .msg.good{color:#2b8a3e}
+    @media(max-width:420px){#gate h1{font-size:1.28rem}#gate .riddle{font-size:1.08rem}}
+  </style>
+  <div class="hearts" id="gateHearts"></div>
+  <div class="card" id="gateCard">
+    <div class="top">💖🌹💘</div>
+    <h1>Antes de entrar a la guía...</h1>
+    <p class="sub">Tienes que responder este pequeño acertijo del corazón para poder estudiar corrosión hoy.</p>
+    <div class="riddle">¿Quién es la niña más bonita de este mundo? 🥰</div>
+    <input type="text" id="gateInput" placeholder="Escribe su nombre completo, con apellido" autocomplete="off" autocapitalize="characters" spellcheck="false">
+    <div class="hint">Pista: no basta con el nombre, también debes escribir el apellido 💞</div>
+    <button type="button" id="gateBtn">Entrar 💗</button>
+    <div class="msg" id="gateMsg"></div>
+  </div>
+</div>
+<script>
+(function(){
+  const hearts=document.getElementById('gateHearts');
+  const syms=['💖','💗','💓','💕','❤️','💘','🌹'];
+  for(let i=0;i<26;i++){
+    const s=document.createElement('span');
+    s.className='heart';
+    s.textContent=syms[Math.floor(Math.random()*syms.length)];
+    s.style.left=Math.random()*100+'%';
+    s.style.setProperty('--drift',(Math.random()*120-60)+'px');
+    s.style.fontSize=(16+Math.random()*26)+'px';
+    s.style.animationDuration=(6+Math.random()*7)+'s';
+    s.style.animationDelay=(Math.random()*8)+'s';
+    hearts.appendChild(s);
+  }
+  const norm=s=>(s||'').toString().trim().toUpperCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ');
+  const input=document.getElementById('gateInput'),btn=document.getElementById('gateBtn'),
+        msg=document.getElementById('gateMsg'),card=document.getElementById('gateCard');
+  let fails=0;
+  function tryAnswer(){
+    const v=norm(input.value);
+    if(v==='DANIELA BAYEH'){
+      msg.className='msg good';msg.textContent='¡Correcto! Que disfrutes la guía 💗';
+      btn.disabled=true;
+      setTimeout(function(){
+        document.getElementById('gate').style.transition='opacity .5s';
+        document.getElementById('gate').style.opacity='0';
+        setTimeout(function(){
+          document.getElementById('gate').remove();
+          const site=document.getElementById('site');
+          if(site)site.style.display='';
+        },500);
+      },500);
+    }else{
+      fails++;
+      card.classList.remove('shake');void card.offsetWidth;card.classList.add('shake');
+      msg.className='msg bad';
+      msg.textContent=fails>=2?'Esa no es... recuerda escribir también el apellido 💔':'Esa no es la respuesta correcta, inténtalo otra vez 💔';
+      input.select();
+    }
+  }
+  btn.addEventListener('click',tryAnswer);
+  input.addEventListener('keydown',function(e){if(e.key==='Enter')tryAnswer();});
+})();
+</script>
+<div id="site" style="display:none">
+<div class="app">
+  <aside class="rail">
+    <div class="brand">Formas de corrosión</div>
+    <nav class="tabs" id="tabs" role="tablist" aria-label="Temas"></nav>
+    <div class="prog"><div class="bar"><div class="fill" id="pfill"></div></div><div class="plab" id="plab">0 de 0 ejercicios</div></div>
+    <div class="credit">Guía de estudio con simulacro</div>
+  </aside>
+  <main id="main"></main>
+</div>
+<div class="foot">Material de repaso basado en las diapositivas <b>Formas de corrosión</b> (AMPP) y en apuntes de clase. Guía de estudio generada como apoyo para el examen.</div>
+<div class="lb" id="lightbox" role="dialog" aria-label="Imagen ampliada"><img id="lbimg" alt=""></div>
+</div>
+<script>
+const IM={};
+/* ===== utilidades ===== */
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const norm=s=>(s||'').toString().trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'').replace(/,/g,'.');
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+let posPool=[];
+function nextPos(){if(!posPool.length)posPool=shuffle([0,1,2,3]);return posPool.pop();}
+function placeOpts(o,pos){ /* o[0] es la correcta; pos 0..3 es su letra final */
+  const rest=shuffle(o.slice(1));rest.splice(pos,0,o[0]);
+  return rest.map((t,i)=>({t:t,c:t===o[0]&&i===pos}));
+}
+const SRC={D:'Diapositivas "Formas de corrosión"'};
+function srcTxt(s){if(!s)return '';return '<span class="src">Fuente: '+s.split(',').map(x=>{x=x.trim();return SRC[x[0]]+', diapositiva '+x.slice(1);}).join('; ')+'</span>';}
+
+/* ===== constructores de contenido ===== */
+const MODS=[];let CUR=null;
+function mod(id,tab,title,lead,ac,soft,ink){CUR={id:id,tab:tab,title:title,lead:lead,ac:ac,soft:soft,ink:ink,blocks:[]};MODS.push(CUR);}
+const add=b=>CUR.blocks.push(b);
+const H=t=>add({k:'h',t:t});
+const P=x=>add({k:'p',x:x});
+const UL=a=>add({k:'ul',a:a});
+const NOTE=(x,t,lbl)=>add({k:'note',x:x,t:t||'',lbl:lbl});
+const TBL=(hd,rows)=>add({k:'tbl',hd:hd,rows:rows});
+const FIG=(key,cap)=>add({k:'fig',keys:[key],cap:cap});
+const FIG2=(k1,c1,k2,c2)=>add({k:'fig2',a:[k1,c1],b:[k2,c2]});
+const LINK=(url,t,d)=>add({k:'link',url:url,t:t,d:d});
+const MC=(q,o,e,opt)=>add(Object.assign({k:'mc',q:q,o:o,e:e},opt||{}));
+const VF=(q,a,e,opt)=>add(Object.assign({k:'vf',q:q,a:a,e:e},opt||{}));
+const FILL=(q,s,bank,e,opt)=>add(Object.assign({k:'fill',q:q,s:s,bank:bank,e:e},opt||{}));
+const OPEN=(q,pts,model,opt)=>add(Object.assign({k:'open',q:q,pts:pts,model:model},opt||{}));
+const MATCH=(q,pairs,e,opt)=>add(Object.assign({k:'match',q:q,pairs:pairs,e:e},opt||{}));
+const ORDER=(q,items,e,opt)=>add(Object.assign({k:'order',q:q,items:items,e:e},opt||{}));
+const SORT=(q,buckets,items,e,opt)=>add(Object.assign({k:'sort',q:q,buckets:buckets,items:items,e:e},opt||{}));
+let SIM=null;
+function sim(qs){SIM=qs;}
+const Q=(t,q,o,e,opt)=>Object.assign({t:t,q:q,o:o,e:e},opt||{}); /* pregunta del simulacro */
+
+/* ===== estado ===== */
+const stats={};let doneCount=0,totalEx=0;
+function bump(m,c,t){const s=stats[m];s.c+=c;s.t+=t;updCnt(m);}
+function updCnt(m){const el=document.querySelector('[data-cnt="'+m+'"]');if(el)el.textContent=stats[m].c+'/'+stats[m].tot;}
+function markDone(ex){if(ex.classList.contains('done'))return;ex.classList.add('done');doneCount++;
+  document.getElementById('pfill').style.width=Math.round(doneCount/totalEx*100)+'%';
+  document.getElementById('plab').textContent=doneCount+' de '+totalEx+' ejercicios resueltos';}
+function fb(el,kind,head,body,s){el.className='fb show '+kind;el.innerHTML='<b class="v">'+head+'</b> '+body+srcTxt(s);}
+function hintHTML(h){return h?'<div class="brow" style="margin-top:8px"><button type="button" class="hintbtn" data-hint>Ver pista</button></div><div class="hintbox"><b>Pista:</b> '+h+'</div>':'';}
+function imgHTML(k){return k?'<div class="eimg"><img src="'+IM[k]+'" alt="Figura de la diapositiva" data-zoom></div>':'';}
+
+/* ===== render ===== */
+function renderBlock(b,m,st){
+  if(b.k==='h')return '<h2 class="sh">'+b.t+'</h2>';
+  if(b.k==='p')return '<p class="tx">'+b.x+'</p>';
+  if(b.k==='ul')return '<ul class="ls">'+b.a.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+  if(b.k==='note')return '<div class="note '+b.t+'"><span class="nt">'+(b.lbl||(b.t==='warn'?'Ojo':b.t==='info'?'Para recordar':'Dato clave'))+'</span>'+b.x+'</div>';
+  if(b.k==='tbl')return '<div class="tw"><table class="tb"><tr>'+b.hd.map(c=>'<th>'+c+'</th>').join('')+'</tr>'+b.rows.map(r=>'<tr>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</table></div>';
+  if(b.k==='fig')return '<div class="fig"><img src="'+IM[b.keys[0]]+'" alt="'+esc(b.cap)+'" data-zoom><div class="fc">'+b.cap+'</div></div>';
+  if(b.k==='fig2')return '<div class="figs2">'+[b.a,b.b].map(x=>'<div class="fig"><img src="'+IM[x[0]]+'" alt="'+esc(x[1])+'" data-zoom><div class="fc">'+x[1]+'</div></div>').join('')+'</div>';
+  if(b.k==='link')return '<a class="linkcard" href="'+b.url+'" target="_blank" rel="noopener"><span class="play"><i></i></span><span><div class="lt">'+b.t+'</div><div class="ld">'+b.d+'</div></span></a>';
+  /* ejercicios */
+  const n=++st.n;st.tot++;
+  const head=(lbl,cls)=>'<div class="exh"><span class="bdg '+(cls||'')+'">'+lbl+'</span><span class="exn">Ejercicio '+n+'</span></div>';
+  if(b.k==='mc'){
+    const pos=nextPos(),opts=placeOpts(b.o,pos);
+    return '<div class="ex" data-ex="mc" data-m="'+m+'">'+head('Selección múltiple')+'<div class="eq">'+b.q+'</div>'+(b.ctx?'<div class="ectx">'+b.ctx+'</div>':'')+imgHTML(b.img)+hintHTML(b.hint)+
+      '<div class="opts">'+opts.map((o,i)=>'<button type="button" class="opt" data-c="'+(o.c?1:0)+'"><span class="mk">'+'ABCD'[i]+'</span><span class="ot">'+o.t+'</span></button>').join('')+'</div>'+
+      '<div class="brow"><button type="button" class="btn" data-check disabled>Comprobar</button></div><div class="fb" data-e="'+esc(b.e)+'" data-s="'+(b.s||'')+'"></div></div>';
+  }
+  if(b.k==='vf'){
+    return '<div class="ex" data-ex="mc" data-m="'+m+'">'+head('Falso o verdadero','t-vf')+'<div class="eq">'+b.q+'</div>'+
+      '<div class="opts vf"><button type="button" class="opt" data-c="'+(b.a?1:0)+'"><span class="mk">V</span><span class="ot">Verdadero</span></button><button type="button" class="opt" data-c="'+(b.a?0:1)+'"><span class="mk">F</span><span class="ot">Falso</span></button></div>'+
+      '<div class="brow"><button type="button" class="btn" data-check disabled>Comprobar</button></div><div class="fb" data-e="'+esc(b.e)+'" data-s="'+(b.s||'')+'"></div></div>';
+  }
+  if(b.k==='fill'){
+    const cnt=(b.s.match(/\{/g)||[]).length;st.tot+=cnt-1;
+    const sent=b.s.replace(/\{([^}]+)\}/g,(x,a)=>'<input class="blank" data-ans="'+esc(a)+'" size="'+Math.max(7,a.split('|')[0].length+2)+'" aria-label="Respuesta" autocomplete="off" autocapitalize="off" spellcheck="false">');
+    return '<div class="ex" data-ex="fill" data-m="'+m+'">'+head('Completar','t-fill')+'<div class="eq">'+b.q+'</div>'+hintHTML(b.hint)+(b.bank?'<div class="bank">'+shuffle(b.bank).map(w=>'<span>'+w+'</span>').join('')+'</div>':'')+
+      '<div class="fsent">'+sent+'</div><div class="brow"><button type="button" class="btn" data-fillcheck>Comprobar</button></div><div class="fb" data-e="'+esc(b.e)+'" data-s="'+(b.s0||b.src||'')+'"></div></div>';
+  }
+  if(b.k==='match'){
+    st.tot+=b.pairs.length-1;
+    const L=shuffle(b.pairs.map((x,i)=>({i:i,t:x[0]}))),R=shuffle(b.pairs.map((x,i)=>({i:i,t:x[1]})));
+    return '<div class="ex" data-ex="match" data-m="'+m+'">'+head('Emparejar','t-match')+'<div class="eq">'+b.q+'</div><div class="mgrid"><div class="mcol"><h4>Columna A</h4>'+
+      L.map(x=>'<button type="button" class="mi" data-side="L" data-id="'+x.i+'"><span class="tg">'+x.t+'</span></button>').join('')+'</div><div class="mcol"><h4>Columna B</h4>'+
+      R.map(x=>'<button type="button" class="mi" data-side="R" data-id="'+x.i+'"><span class="tg">'+x.t+'</span></button>').join('')+'</div></div><div class="fb" data-e="'+esc(b.e)+'" data-s="'+(b.s||'')+'"></div></div>';
+  }
+  if(b.k==='order'){
+    return '<div class="ex" data-ex="order" data-m="'+m+'">'+head('Ordenar','t-order')+'<div class="eq">'+b.q+'</div><div class="ochips">'+
+      shuffle(b.items.map((t,i)=>({t:t,i:i}))).map(x=>'<button type="button" class="chipbtn" data-i="'+x.i+'">'+x.t+'</button>').join('')+'</div>'+
+      '<div class="brow"><button type="button" class="btn ghost" data-reset>Reiniciar</button></div><div class="fb" data-e="'+esc(b.e)+'" data-s="'+(b.s||'')+'"></div></div>';
+  }
+  if(b.k==='sort'){
+    st.tot+=b.items.length-1;
+    return '<div class="ex" data-ex="sort" data-m="'+m+'">'+head('Clasificar','t-sort')+'<div class="eq">'+b.q+'</div><div>'+
+      b.items.map((it,i)=>'<div class="srow" data-ans="'+it[1]+'"><span class="st">'+it[0]+'</span><span class="sbk">'+b.buckets.map((bk,j)=>'<button type="button" data-b="'+j+'">'+bk+'</button>').join('')+'</span></div>').join('')+'</div>'+
+      '<div class="brow"><button type="button" class="btn" data-sortcheck>Comprobar</button></div><div class="fb" data-e="'+esc(b.e)+'" data-s="'+(b.s||'')+'"></div></div>';
+  }
+  if(b.k==='open'){
+    return '<div class="ex" data-ex="open" data-m="'+m+'">'+head('Respuesta abierta','t-open')+'<div class="eq">'+b.q+'</div>'+(b.ctx?'<div class="ectx">'+b.ctx+'</div>':'')+imgHTML(b.img)+
+      '<textarea class="ta" rows="4" placeholder="Escribe tu respuesta antes de ver la modelo" aria-label="Tu respuesta"></textarea>'+
+      '<div class="brow"><button type="button" class="btn" data-reveal>Ver respuesta modelo</button></div>'+
+      '<div class="mdl"><div class="mt">Respuesta modelo</div><div class="mb">'+b.model+'</div>'+imgHTML(b.img2)+'<div class="mt" style="margin-top:12px">Revisa si tu respuesta incluyó</div><ul class="chk">'+b.pts.map(p=>'<li><label><input type="checkbox"> <span>'+p+'</span></label></li>').join('')+'</ul>'+srcTxt(b.s)+'</div></div>';
+  }
+  return '';
+}
+function renderSim(m){
+  const poss=[];for(let i=0;i<SIM.length;i++)poss.push(i%4);
+  const pp=shuffle(poss);
+  const topics={};MODS.forEach(x=>{topics[x.id]=x.tab;});
+  let h='<div class="simtop"><span class="cn" id="simcnt">Respondidas 0 de '+SIM.length+'</span><button class="btn" id="simgo">Calificar</button></div>';
+  h+='<div class="res" id="simres"></div>';
+  SIM.forEach((q,i)=>{
+    const opts=placeOpts(q.o,pp[i]);
+    h+='<div class="sq" data-q="'+i+'"><div class="qn">Pregunta '+(i+1)+' de '+SIM.length+'</div><div class="qt">'+q.q+'</div>'+(q.ctx?'<div class="ectx">'+q.ctx+'</div>':'')+imgHTML(q.img)+
+      '<div class="opts">'+opts.map((o,k)=>'<button type="button" class="opt" data-c="'+(o.c?1:0)+'"><span class="mk">'+'ABCD'[k]+'</span><span class="ot">'+o.t+'</span></button>').join('')+'</div><div class="fb" data-e="'+esc(q.e)+'" data-s="'+(q.s||'')+'"></div></div>';
+  });
+  h+='<div class="brow"><button class="btn" id="simgo2">Calificar</button><button class="btn ghost" id="simreset">Reiniciar con otro orden</button></div>';
+  return h;
+}
+function boot(){
+  const tabs=document.getElementById('tabs'),main=document.getElementById('main');
+  let th='',mh='';
+  MODS.forEach(function(m,mi){
+    stats[m.id]={c:0,t:0,tot:0};
+    const st={n:0,tot:0};
+    let body='';
+    if(m.id==='sim'){body=renderSim(m);}
+    else m.blocks.forEach(b=>{body+=renderBlock(b,m.id,st);});
+    stats[m.id].tot=st.tot;if(m.id!=='sim')totalEx+=st.n;
+    th+='<button type="button" class="tab" role="tab" data-m="'+m.id+'" aria-selected="'+(mi===0)+'" style="--ac:'+m.ac+';--soft:'+m.soft+'"><span class="dot"></span><span class="tl">'+m.tab+'</span><span class="cnt" data-cnt="'+m.id+'">'+(m.id==='sim'?SIM.length:'0/'+st.tot)+'</span></button>';
+    mh+='<section class="module'+(mi===0?' show':'')+'" id="mod-'+m.id+'" style="--ac:'+m.ac+';--soft:'+m.soft+';--ink2:'+m.ink+'"><div class="mhead"><h1>'+m.title+'</h1><p class="lead">'+m.lead+'</p></div>'+body+'</section>';
+  });
+  tabs.innerHTML=th;main.innerHTML=mh;
+  document.getElementById('plab').textContent='0 de '+totalEx+' ejercicios resueltos';
+  wire();
+}
+function goMod(id){
+  document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.m===id));
+  document.querySelectorAll('.module').forEach(s=>s.classList.toggle('show',s.id==='mod-'+id));
+  window.scrollTo({top:0});
+  const t=document.querySelector('.tab[data-m="'+id+'"]');if(t&&t.scrollIntoView)t.scrollIntoView({block:'nearest',inline:'center'});
+}
+function wire(){
+  document.addEventListener('click',function(e){
+    const t=e.target.closest('.tab');if(t){goMod(t.dataset.m);return;}
+    const g=e.target.closest('[data-goto]');if(g){goMod(g.dataset.goto);return;}
+    const hb=e.target.closest('[data-hint]');if(hb){const bx=hb.parentElement.nextElementSibling;const s=bx.classList.toggle('show');hb.textContent=s?'Ocultar pista':'Ver pista';return;}
+    const z=e.target.closest('[data-zoom]');if(z){document.getElementById('lbimg').src=z.src;document.getElementById('lightbox').classList.add('show');return;}
+    if(e.target.closest('#lightbox')){document.getElementById('lightbox').classList.remove('show');}
+  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('lightbox').classList.remove('show');});
+  /* selección múltiple y V/F */
+  document.querySelectorAll('[data-ex=mc]').forEach(function(ex){
+    const btn=ex.querySelector('[data-check]'),f=ex.querySelector('.fb');let sel=null,done=false;
+    ex.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',function(){if(done)return;ex.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));o.classList.add('sel');sel=o;btn.disabled=false;}));
+    btn.addEventListener('click',function(){if(!sel||done)return;done=true;
+      const good=sel.dataset.c==='1';let right='';
+      ex.querySelectorAll('.opt').forEach(o=>{o.classList.add('lock');o.classList.remove('sel');if(o.dataset.c==='1'){o.classList.add('right');right=o.querySelector('.mk').textContent;}else if(o===sel)o.classList.add('wrong');});
+      const isVF=ex.querySelector('.opts.vf');
+      fb(f,good?'good':'bad',good?'Correcto.':(isVF?'La respuesta correcta es '+(right==='V'?'Verdadero':'Falso')+'.':'La respuesta correcta es la '+right+'.'),f.dataset.e,f.dataset.s);
+      btn.disabled=true;btn.textContent=good?'Respuesta correcta':'Lee la explicación';
+      bump(ex.dataset.m,good?1:0,1);markDone(ex);});
+  });
+  /* completar */
+  document.querySelectorAll('[data-ex=fill]').forEach(function(ex){
+    const f=ex.querySelector('.fb');let scored=false;
+    ex.querySelector('[data-fillcheck]').addEventListener('click',function(){
+      const bl=[...ex.querySelectorAll('.blank')];let ok=0;
+      bl.forEach(b=>{const good=b.value.trim()!==''&&b.dataset.ans.split('|').map(norm).indexOf(norm(b.value))>=0;b.classList.remove('ok','no');b.classList.add(good?'ok':'no');if(good)ok++;});
+      const all=ok===bl.length;
+      if(all){bl.forEach(b=>b.disabled=true);fb(f,'good','Correcto.',f.dataset.e,f.dataset.s);}
+      else fb(f,'mid','Acertaste '+ok+' de '+bl.length+'.','Corrige los campos en rojo y vuelve a comprobar. Revisa también las pistas si las hay.','');
+      if(!scored){scored=true;bump(ex.dataset.m,ok,bl.length);}
+      if(all)markDone(ex);});
+  });
+  /* respuesta abierta */
+  document.querySelectorAll('[data-ex=open]').forEach(function(ex){
+    const btn=ex.querySelector('[data-reveal]');
+    btn.addEventListener('click',function(){ex.querySelector('.mdl').classList.add('show');btn.disabled=true;btn.textContent='Respuesta modelo visible';
+      if(!ex.classList.contains('done')){bump(ex.dataset.m,1,1);markDone(ex);}});
+  });
+  /* emparejar */
+  document.querySelectorAll('[data-ex=match]').forEach(function(ex){
+    const f=ex.querySelector('.fb');let selL=null,done=0,errs=0;const total=ex.querySelectorAll('[data-side=L]').length;
+    ex.querySelectorAll('.mi').forEach(it=>it.addEventListener('click',function(){
+      if(it.classList.contains('done'))return;
+      if(it.dataset.side==='L'){ex.querySelectorAll('[data-side=L]').forEach(x=>x.classList.remove('sel'));it.classList.add('sel');selL=it;return;}
+      if(!selL){it.classList.add('miss');setTimeout(()=>it.classList.remove('miss'),400);return;}
+      const first=!selL.dataset.tried;selL.dataset.tried='1';
+      if(selL.dataset.id===it.dataset.id){if(first)bump(ex.dataset.m,1,1);else bump(ex.dataset.m,0,1);
+        [selL,it].forEach(x=>{x.classList.add('done');x.classList.remove('sel');});selL=null;done++;
+        if(done===total){fb(f,'good','Emparejamiento completo.',f.dataset.e,f.dataset.s);markDone(ex);}
+      }else{const a=selL;if(first)bump(ex.dataset.m,0,1);[a,it].forEach(x=>x.classList.add('miss'));setTimeout(()=>{a.classList.remove('miss','sel');it.classList.remove('miss');},430);selL=null;}
+    }));
+  });
+  /* ordenar */
+  document.querySelectorAll('[data-ex=order]').forEach(function(ex){
+    const f=ex.querySelector('.fb');let next=0,errs=0;const chips=[...ex.querySelectorAll('.chipbtn')],total=chips.length;
+    chips.forEach(c=>c.addEventListener('click',function(){
+      if(c.classList.contains('used'))return;
+      if(+c.dataset.i===next){next++;c.classList.add('used');c.innerHTML='<span class="n">'+next+'</span>'+c.innerHTML;
+        if(next===total){fb(f,errs?'mid':'good',errs?'Orden completo con '+errs+' intento'+(errs>1?'s':'')+' fallido'+(errs>1?'s':'')+'.':'Orden correcto.',f.dataset.e,f.dataset.s);bump(ex.dataset.m,errs?0:1,1);markDone(ex);}
+      }else{errs++;c.classList.add('miss');setTimeout(()=>c.classList.remove('miss'),400);}
+    }));
+    ex.querySelector('[data-reset]').addEventListener('click',function(){if(next===total)return;next=0;errs=0;chips.forEach(c=>{c.classList.remove('used');c.innerHTML=c.textContent.replace(/^\d+/,'');});f.className='fb';});
+  });
+  /* clasificar */
+  document.querySelectorAll('[data-ex=sort]').forEach(function(ex){
+    const f=ex.querySelector('.fb');let checks=0;const rows=[...ex.querySelectorAll('.srow')];
+    rows.forEach(r=>r.querySelectorAll('button').forEach(b=>b.addEventListener('click',function(){r.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');r.classList.remove('ok','no');})));
+    ex.querySelector('[data-sortcheck]').addEventListener('click',function(){
+      let ok=0,miss=0;
+      rows.forEach(r=>{const on=r.querySelector('button.on');r.classList.remove('ok','no');if(on&&on.dataset.b===r.dataset.ans){r.classList.add('ok');ok++;}else{r.classList.add('no');miss++;}});
+      checks++;
+      if(checks===1)bump(ex.dataset.m,ok,rows.length);
+      if(miss===0){fb(f,'good','Clasificación correcta.',f.dataset.e,f.dataset.s);markDone(ex);}
+      else{fb(f,'mid','Acertaste '+ok+' de '+rows.length+'.','Cambia los elementos en rojo y vuelve a comprobar.'+(checks>1?' <br>'+f.dataset.e:''),checks>1?f.dataset.s:'');if(checks>1)markDone(ex);}
+    });
+  });
+  setupSim();
+}
+function setupSim(){
+  const simEl=document.getElementById('mod-sim');if(!simEl)return;
+  const qs=[...simEl.querySelectorAll('.sq')];let graded=false;
+  const names={};MODS.forEach(x=>names[x.id]=x.tab);
+  const cnt=()=>{document.getElementById('simcnt').textContent='Respondidas '+qs.filter(q=>q.querySelector('.opt.sel')).length+' de '+qs.length;};
+  qs.forEach(q=>q.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',function(){if(graded)return;q.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));o.classList.add('sel');cnt();})));
+  function grade(){
+    if(graded)return;graded=true;let ok=0;const per={};
+    qs.forEach((q,i)=>{const item=SIM[i],sel=q.querySelector('.opt.sel');let good=false,right='';
+      q.querySelectorAll('.opt').forEach(o=>{o.classList.add('lock');o.classList.remove('sel');if(o.dataset.c==='1'){o.classList.add('right');right=o.querySelector('.mk').textContent;}});
+      if(sel&&sel.dataset.c==='1')good=true;else if(sel)sel.classList.add('wrong');
+      const f=q.querySelector('.fb');
+      fb(f,good?'good':'bad',good?'Correcto.':(sel?'Incorrecta. La respuesta es la '+right+'.':'Sin responder. La respuesta es la '+right+'.'),f.dataset.e,f.dataset.s);
+      per[item.t]=per[item.t]||{c:0,t:0};per[item.t].t++;if(good){ok++;per[item.t].c++;}});
+    const res=document.getElementById('simres'),pct=Math.round(ok/qs.length*100);
+    const order=MODS.map(x=>x.id).filter(id=>per[id]);
+    let rh='<div class="rtop"><div class="ring" style="--p:'+pct+'"><b>'+ok+'/'+qs.length+'</b></div><div><div style="font-family:var(--f-head);font-size:1.5rem;font-weight:700">'+ok+' de '+qs.length+' respuestas correctas</div><p class="lead" style="font-size:1rem;margin-top:4px">'+(pct>=80?'Dominas la mayor parte del contenido. Revisa los temas con barra naranja o roja.':pct>=60?'Buen avance. Repasa los temas con barra naranja o roja antes del examen.':'Conviene repasar la teoría de cada pestaña y repetir el simulacro.')+'</p></div></div><div class="rl">';
+    order.forEach(id=>{const p=per[id],pc=Math.round(p.c/p.t*100);rh+='<div class="rr"><span>'+names[id]+'</span><span class="rb"><span class="rf '+(pc>=75?'':pc>=50?'mid':'low')+'" style="display:block;width:'+pc+'%"></span></span><span class="rp">'+p.c+'/'+p.t+'</span></div>';});
+    rh+='</div><div class="brow">'+order.filter(id=>per[id].c/per[id].t<0.75).slice(0,4).map(id=>'<button type="button" class="btn ghost" data-goto="'+id+'">Repasar '+names[id]+'</button>').join('')+'</div>';
+    res.innerHTML=rh;res.classList.add('show');
+    document.querySelector('[data-cnt=sim]').textContent=ok+'/'+qs.length;
+    const top=simEl.getBoundingClientRect().top+window.scrollY;window.scrollTo({top:top,behavior:'smooth'});
+  }
+  simEl.querySelectorAll('#simgo,#simgo2').forEach(b=>b.addEventListener('click',grade));
+  simEl.querySelector('#simreset').addEventListener('click',function(){
+    const head=simEl.querySelector('.mhead').outerHTML;
+    simEl.innerHTML=head+renderSim();
+    document.querySelector('[data-cnt=sim]').textContent=SIM.length;
+    setupSim();window.scrollTo({top:0});
+  });
+}
+
+/* ============ FUNDAMENTOS ============ */
+mod('intro','Fundamentos','Qué es la corrosión y cómo se clasifica',
+ 'La corrosión es el deterioro de un material, casi siempre metálico, por reacción con su entorno. No es un fenómeno aleatorio: sus formas se agrupan según cómo se identifican, desde la simple observación visual hasta la verificación microscópica.',
+ '#495057','#eef1f2','#343a40');
+H("Corrosión electroquímica: ánodo y cátodo");
+P("La mayoría de los procesos de corrosión en metales son de naturaleza electroquímica: se forma una celda en la que una zona actúa como <b>ánodo</b> (se oxida y pierde metal) y otra como <b>cátodo</b> (se reduce, casi siempre consumiendo oxígeno). La fuerza que mueve la reacción es la diferencia de potencial entre ambas zonas.");
+NOTE("Reacción anódica: M → M<sup>n+</sup> + ne<sup>-</sup> (el metal se disuelve). Reacción catódica típica en medio neutro aireado: O<sub>2</sub> + 2H<sub>2</sub>O + 4e<sup>-</sup> → 4OH<sup>-</sup>.","info","Para recordar");
+H("Los tres grupos de formas de corrosión");
+P("La clasificación de referencia agrupa las formas de corrosión según el medio necesario para identificarlas.");
+TBL(["Grupo","Cómo se identifica","Formas que incluye"],[
+ ["Grupo 1","Observación visual directa, a simple vista","Uniforme, picado (pitting), grietas (crevice), filiforme, pack rust, galvánica, laminar"],
+ ["Grupo 2","Necesita un medio adicional de examen","Erosión, cavitación, fretting, intergranular, exfoliación, lixiviación selectiva (dealloying)"],
+ ["Grupo 3","Requiere verificación microscópica","Agrietamiento ambiental: SCC, fatiga por corrosión, fragilización por hidrógeno"]
+]);
+NOTE("La corrosión microbiológicamente influenciada (MIC) no es, en sentido estricto, una forma de corrosión aparte: son microorganismos que aceleran el deterioro, por lo que actúa como un factor agravante transversal a otras formas.","warn","Ojo");
+H("Fuentes de la corrosión localizada");
+UL(["Ambiente: concentración de oxígeno, concentración de ion cloruro, pH, velocidad de flujo","Material: segregación, inclusiones, fases distintas, límites de grano","Mecánico: esfuerzo estático, esfuerzo fluctuante"]);
+H("Ejercicios");
+MC("¿Cuál de las siguientes reacciones corresponde al ánodo en una celda de corrosión electroquímica?",
+ ["M → M<sup>n+</sup> + ne<sup>-</sup>, el metal se disuelve liberando electrones","O<sub>2</sub> + 2H<sub>2</sub>O + 4e<sup>-</sup> → 4OH<sup>-</sup>, consumo de oxígeno","2H<sup>+</sup> + 2e<sup>-</sup> → H<sub>2</sub>, reducción de hidrógeno en el cátodo","Fe<sup>3+</sup> + e<sup>-</sup> → Fe<sup>2+</sup>, reducción de un ion férrico externo"],
+ "En el ánodo el metal se oxida y pasa a solución como ion metálico, liberando electrones que viajan hacia el cátodo. Las otras tres opciones son reacciones de reducción, propias del cátodo.",{s:"D657"});
+MC("Un componente presenta ataque localizado y, al examinarlo, el ingeniero nota que necesitó usar un microscopio para confirmar el tipo de daño. Según la clasificación por grupos, ¿a qué grupo pertenece ese tipo de corrosión?",
+ ["Grupo 3, formas que requieren verificación microscópica","Grupo 1, formas identificables a simple vista","Grupo 2, formas que solo necesitan un medio adicional de examen","Ningún grupo, porque la clasificación no contempla el microscopio"],
+ "El grupo 3 agrupa el agrietamiento ambiental: SCC, fatiga por corrosión y fragilización por hidrógeno, formas que exigen verificación microscópica para confirmarse. El grupo 1 se identifica a ojo y el grupo 2 con un medio adicional, pero sin llegar al microscopio.",{s:"D3"});
+VF("La corrosión microbiológicamente influenciada (MIC) es, en sentido estricto, una forma de corrosión independiente de las demás.",false,
+ "Falso. La MIC no es técnicamente una forma de corrosión aparte: son microbios o bacterias que aceleran el deterioro de otras formas de corrosión ya existentes.",{s:"D3"});
+MATCH("Relaciona cada factor de corrosión localizada con la categoría a la que pertenece.",[
+ ["Concentración de ion cloruro","Ambiente"],
+ ["Segregación de elementos en el material","Material"],
+ ["Esfuerzo fluctuante","Mecánico"],
+ ["pH de la solución","Ambiente"]],
+ "El ambiente agrupa oxígeno, cloruro, pH y flujo; el material agrupa segregación, inclusiones, fases y límites de grano; lo mecánico agrupa esfuerzo estático y fluctuante.",{s:"D548"});
+SORT("Clasifica cada forma de corrosión según el grupo al que pertenece.",["Grupo 1: visual","Grupo 2: medio adicional","Grupo 3: microscópica"],[
+ ["Corrosión uniforme",0],
+ ["Fatiga por corrosión",2],
+ ["Corrosión por erosión",1],
+ ["Corrosión galvánica",0],
+ ["Fragilización por hidrógeno",2],
+ ["Corrosión intergranular",1]],
+ "Grupo 1 (visual): uniforme y galvánica. Grupo 2 (medio adicional): erosión e intergranular. Grupo 3 (microscópica): fatiga por corrosión y fragilización por hidrógeno.",{s:"D3"});
+FILL("Completa el texto con las palabras del recuadro.","En la celda de corrosión, el {ánodo} es la zona que se oxida y pierde metal, mientras que el {cátodo} es la zona que se reduce, casi siempre consumiendo {oxígeno} disuelto.",["ánodo","cátodo","oxígeno","hidrógeno","cloruro"],
+ "El ánodo se disuelve liberando electrones; el cátodo los consume, típicamente en la reducción del oxígeno disuelto en el electrolito.",{s0:"D657"});
+OPEN("Un inspector encuentra que una tubería enterrada presenta pérdida de espesor pareja en toda su superficie, sin picaduras ni grietas. Explica qué tipo de corrosión es más probable y por qué, según su definición y su forma de clasificarse.",
+ ["Identifica que es corrosión uniforme por el ataque parejo en toda la superficie","Explica que pertenece al grupo 1 porque se identifica a simple vista","Menciona que, aunque consume mucho metal en total, es predecible y fácil de controlar con protección catódica, recubrimientos o tolerancia a la corrosión"],
+ "<p>Es <b>corrosión uniforme</b>: se caracteriza por un ataque parejo sobre toda la superficie expuesta, sin preferencia por ningún punto. Por esa misma razón se identifica a simple vista y pertenece al grupo 1 de la clasificación.</p><p>Aunque es la forma que más tonelaje de metal consume en total, es la más fácil de medir, predecir y controlar: mediante protección catódica, recubrimientos, pinturas o simplemente especificando una tolerancia a la corrosión en el diseño.</p>",
+ {s:"D4,D5"});
+
+/* ============ UNIFORME ============ */
+mod('uniforme','Uniforme','Corrosión uniforme',
+ 'Es la forma de corrosión más común y la que más tonelaje de metal consume en el mundo, pero también la más fácil de predecir y controlar porque avanza de manera pareja sobre toda la superficie expuesta.',
+ '#2b8a3e','#eaf6ec','#1b5e27');
+H("Características principales");
+UL(["Eliminación uniforme del metal en toda la superficie expuesta al medio corrosivo","Todos los metales pueden sufrir corrosión uniforme","Es el tipo de corrosión más común y el que más tonelaje de metal consume","Es el menos crítico para el diseño de ingeniería: es fácil de probar, inspeccionar y predecir fallas"]);
+NOTE("Precisamente por avanzar de forma pareja, la corrosión uniforme rara vez produce fallas catastróficas inesperadas; en muchos casos solo afecta la apariencia del componente.","info","Para recordar");
+H("Cómo se controla");
+P("Como la corrosión ocurre de manera uniforme en toda la superficie del componente, se puede controlar de forma práctica mediante protección catódica, inhibidores, buena selección de materiales, recubrimientos o pinturas, o simplemente especificando una tolerancia a la corrosión en el espesor de diseño.");
+NOTE("No toda corrosión uniforme es indeseable: la pátina del cobre en techos y el óxido de los aceros autopatinables (weathering steels) son ejemplos de corrosión uniforme que se deja ocurrir de forma controlada, incluso por estética.","tip","Dato clave");
+H("Ejercicios");
+MC("¿Por qué la corrosión uniforme representa, en términos de diseño de ingeniería, el tipo de ataque menos crítico entre todas las formas de corrosión?",
+ ["Porque avanza de forma pareja y por eso es fácil de probar, inspeccionar y predecir","Porque consume muy poco metal en comparación con las demás formas","Porque nunca requiere protección catódica ni recubrimientos adicionales","Porque solo ocurre en metales nobles como el oro y el platino"],
+ "La clave no es que consuma poco metal (de hecho es la forma que más tonelaje consume), sino que su avance parejo la hace fácil de medir, predecir e inspeccionar, lo que reduce el riesgo de una falla inesperada.",{s:"D4"});
+VF("La corrosión uniforme es la forma de corrosión que, en total, consume más tonelaje de metal en el mundo.",true,
+ "Verdadero. Sobre la base del tonelaje de metal perdido, la corrosión uniforme es la forma más importante de corrosión, aunque sus fallas catastróficas sean relativamente raras.",{s:"D4"});
+VF("Un recubrimiento o pintura no sirve como método de control frente a la corrosión uniforme, solo frente a la corrosión por picado.",false,
+ "Falso. Precisamente porque el ataque es parejo en toda la superficie, los recubrimientos, las pinturas, la protección catódica y la tolerancia a la corrosión son controles prácticos y efectivos contra la corrosión uniforme.",{s:"D5"});
+MC("Un techo de cobre que, con los años, desarrolla una capa verdosa pareja (pátina) en toda su superficie expuesta a la intemperie es un ejemplo de:",
+ ["Corrosión uniforme que en este caso se acepta por razones estéticas y de protección","Corrosión por picado, porque el cobre siempre forma pozos localizados","Corrosión galvánica entre el cobre y el aire atmosférico","Agrietamiento por corrosión bajo tensión en un metal no ferroso"],
+ "La pátina del cobre es un caso clásico de corrosión uniforme deseada: el ataque parejo forma una capa protectora y de valor estético, igual que el óxido de los aceros autopatinables.",{s:"D5"});
+FILL("Completa el texto con las palabras del recuadro.","La corrosión uniforme se caracteriza por una eliminación {pareja} del metal en {toda} la superficie expuesta, y se controla con protección {catódica}, recubrimientos o una tolerancia a la corrosión.",["pareja","toda","catódica","localizada","picado"],
+ "El rasgo distintivo de la corrosión uniforme es que el ataque es parejo en toda la superficie, lo que permite controlarla con protección catódica, recubrimientos o una tolerancia de diseño.",{s0:"D4,D5"});
+ORDER("Ordena, de menor a mayor gravedad práctica para el diseño de ingeniería, estas tres situaciones de pérdida de metal.",
+ ["Corrosión uniforme con tolerancia a la corrosión ya considerada en el diseño","Corrosión uniforme detectada tarde, sin tolerancia de diseño, en un componente crítico","Picado (pitting) no detectado que perfora la pared de un tanque"],
+ "La corrosión uniforme con tolerancia de diseño es el caso controlado y esperado; la misma corrosión uniforme sin tolerancia prevista ya compromete el componente; y el picado no detectado es el más grave porque perfora con mínima pérdida total de masa, lo que lo hace más difícil de anticipar.",{s:"D4,D301"});
+OPEN("Un tanque de almacenamiento de agua, sin recubrimiento interno, pierde espesor de manera pareja en toda su superficie sumergida. El propietario pregunta si debe preocuparse por una falla catastrófica repentina. Redacta tu respuesta técnica.",
+ ["Explica que, al ser corrosión uniforme, el riesgo de falla súbita es bajo porque el ataque es predecible y medible","Recomienda medir la velocidad de corrosión y comparar el espesor remanente contra una tolerancia de diseño","Sugiere opciones de control: recubrimiento o pintura interna, protección catódica o selección de un material más resistente"],
+ "<p>La corrosión uniforme, al avanzar de forma pareja, se mide y predice con relativa facilidad, por lo que las fallas desastrosas y repentinas son poco probables en comparación con formas localizadas como el picado.</p><p>La recomendación técnica es medir la velocidad de corrosión (por ejemplo con cupones o ultrasonido), compararla contra el espesor remanente y, si es necesario, aplicar protección catódica, un recubrimiento interno o cambiar a un material con mejor resistencia.</p>",
+ {s:"D4,D5"});
+
+/* ============ GALVÁNICA ============ */
+mod('galvanica','Galvánica','Corrosión galvánica',
+ 'Ocurre cuando dos metales distintos quedan en contacto eléctrico dentro de un electrolito: uno se vuelve ánodo y se corroe más rápido de lo que lo haría solo, mientras el otro se vuelve cátodo y se corroe más lento.',
+ '#e8590c','#fff0e6','#a63f06');
+H("Definición y mecanismo");
+P("La corrosión galvánica (también llamada corrosión por metales disímiles) es el daño inducido cuando dos materiales distintos quedan acoplados en un electrolito corrosivo. La fuerza que impulsa el proceso es la diferencia de potencial entre los dos metales. En la pareja, el metal menos noble se vuelve el ánodo y se corroe de forma acelerada; el más noble se vuelve el cátodo y su corrosión se frena o se detiene.");
+NOTE("El principio se descubrió a finales del siglo XVIII con los experimentos de Luigi Galvani con ancas de rana, y Alessandro Volta lo convirtió en la primera batería en 1800. Más tarde, Humphry Davy y Michael Faraday lo aplicaron como protección: el ánodo de sacrificio (zinc, magnesio o aluminio).","info","Para recordar");
+H("Factores que influyen en la corrosión galvánica");
+UL(["Diferencia de potencial: posición de los metales en la serie galvánica","Conductividad del electrolito y temperatura","Relación de área cátodo/ánodo: una relación pequeña (ánodo pequeño, cátodo grande) es muy desfavorable","Efecto de la distancia entre los metales acoplados","Existencia de una conexión eléctrica entre los dos electrodos"]);
+NOTE("En ciertas condiciones ambientales, un acople galvánico puede invertir su polaridad: el acero galvanizado en sistemas de agua caliente es el ejemplo clásico, donde el zinc puede dejar de proteger al acero y comenzar a acelerarlo.","warn","Ojo");
+H("Un caso clásico: perno y estructura");
+TBL(["Situación","Qué ocurre"],
+[["Perno de latón en una estructura de acero","El cátodo de latón es pequeño frente al acero; esto solo provoca un pequeño aumento de corrosión en el acero, mientras el perno queda protegido por el acople"],
+["Perno de acero en una estructura de latón","El ánodo de acero es pequeño frente al latón; el perno sufre un aumento grande de corrosión por el acople con la estructura de latón, mucho más noble"]]);
+NOTE("La restauración de la Estatua de la Libertad en 1986 se debió a corrosión galvánica: un tornillo de acero inoxidable con una arandela de acero chapada en cadmio dentro del estabilizador horizontal interno de la estructura, en contacto con el hierro forjado original.","tip","Dato clave");
+H("Prevención");
+UL(["Seleccionar metales con potenciales de electrodo similares para minimizar la fuerza impulsora","Evitar la condensación de humedad para que no se forme electrolito","Aislar eléctricamente los metales distintos entre sí","Aplicar recubrimientos que aíslen el metal del electrolito","Instalar un tercer metal anódico frente a ambos metales del acople","Diseñar pensando en reemplazar fácilmente el metal anódico, o darle mayor espesor"]);
+H("Ejercicios");
+MC("En un acople galvánico entre dos metales distintos sumergidos en un electrolito, ¿qué le ocurre al metal más noble (cátodo) en comparación con su corrosión si estuviera solo?",
+ ["Su velocidad de corrosión disminuye, o incluso se detiene por completo","Su velocidad de corrosión aumenta de forma notable y acelerada","Permanece exactamente igual, sin ningún cambio detectable","Se vuelve el nuevo ánodo de la celda y empieza a disolverse"],
+ "El metal más noble actúa como cátodo en el acople: su corrosión se desacelera o incluso se detiene, mientras el metal menos noble (ánodo) se corroe de forma acelerada.",{s:"D188"});
+MC("Un ingeniero debe unir una placa de acero al carbono con pernos. ¿Qué combinación de materiales minimiza mejor el riesgo de corrosión galvánica severa en los pernos?",
+ ["Pernos de un metal con potencial de electrodo similar al acero al carbono","Pernos de latón, porque su cátodo pequeño no afecta al acero","Pernos de acero inoxidable sin ningún tipo de aislamiento eléctrico","Pernos de cobre puro en contacto directo y húmedo con el acero"],
+ "La estrategia de prevención más directa es elegir metales con potenciales de electrodo cercanos, para minimizar la fuerza impulsora de la celda galvánica. Usar latón o cobre crea un acople con una diferencia de potencial importante frente al acero.",{s:"D682"});
+VF("Una relación de área pequeña entre cátodo y ánodo (ánodo pequeño frente a un cátodo grande) es una condición favorable que reduce el daño galvánico sobre el ánodo.",false,
+ "Falso. Una relación de área pequeña es altamente indeseable: la corriente galvánica se concentra sobre una superficie anódica reducida, lo que provoca una pérdida de espesor rápida justo en esa zona pequeña.",{s:"D562"});
+VF("El acero galvanizado en sistemas de agua caliente puede, bajo ciertas condiciones, invertir su polaridad y dejar de proteger al acero base.",true,
+ "Verdadero. Bajo ciertas condiciones ambientales, el acople galvánico puede revertir su diferencia de potencial de celda; el caso típico es el acero galvanizado en sistemas de agua caliente.",{s:"D567"});
+MATCH("Relaciona cada elemento de la prevención galvánica con su efecto principal.",[
+ ["Aislamiento eléctrico entre metales distintos","Evita la conexión eléctrica entre los dos electrodos"],
+ ["Recubrimiento protector","Aísla el metal del electrolito"],
+ ["Tercer metal instalado a propósito","Actúa como ánodo de sacrificio frente a los otros dos metales"],
+ ["Evitar condensación de humedad","Elimina la posibilidad de formar el electrolito"]],
+ "Cada técnica de prevención ataca un elemento distinto de la celda galvánica: la conexión eléctrica, el electrolito, o introduce un ánodo de sacrificio adicional.",{s:"D681"});
+SORT("Clasifica cada situación según si favorece o no la corrosión galvánica.",["Favorece la corrosión galvánica","No la favorece"],[
+ ["Gran diferencia de potencial entre los metales acoplados",0],
+ ["Metales con potenciales de electrodo muy similares",1],
+ ["Relación de área ánodo pequeño / cátodo grande",0],
+ ["Aislamiento eléctrico completo entre los metales",1],
+ ["Electrolito de alta conductividad y temperatura elevada",0],
+ ["Ánodo de sacrificio instalado deliberadamente para proteger la estructura",1]],
+ "Favorecen el daño: gran diferencia de potencial, ánodo pequeño frente a cátodo grande, y electrolito muy conductor y caliente. No lo favorecen: potenciales similares, aislamiento eléctrico y el uso correcto de un ánodo de sacrificio.",{s:"D562,D681"});
+FILL("Completa el texto con las palabras del recuadro.","En un acople galvánico, el metal menos {noble} se convierte en el {ánodo} de la celda y se corroe de forma {acelerada}, mientras el metal más noble actúa como {cátodo}.",["noble","ánodo","acelerada","cátodo","uniforme"],
+ "El metal menos noble (más activo) se vuelve ánodo y acelera su disolución; el más noble se vuelve cátodo y frena su corrosión.",{s0:"D206"});
+OPEN("Una embarcación tiene el casco de acero y la hélice de bronce, ambos en contacto eléctrico y sumergidos en agua de mar. Explica qué parte se corroerá más rápido que si estuviera sola, y propone dos medidas de prevención concretas.",
+ ["Identifica que el acero, al ser menos noble que el bronce, se vuelve el ánodo y se corroe más rápido","Explica que el bronce, al ser más noble, se vuelve el cátodo y se corroe más lento de lo que lo haría solo","Propone al menos dos medidas: aislamiento eléctrico, recubrimiento, ánodo de sacrificio o selección de materiales con potenciales similares"],
+ "<p>El acero del casco, al ser el metal menos noble del acople, se vuelve el ánodo de la celda galvánica y se corroe de forma acelerada frente a la hélice de bronce, que actúa como cátodo y se corroe más lento de lo que lo haría sola.</p><p>Medidas típicas: instalar ánodos de sacrificio de zinc o aluminio cerca de la hélice, aislar eléctricamente las piezas donde sea posible, o aplicar recubrimientos protectores que separen los metales del electrolito.</p>",
+ {s:"D188,D205"});
+
+/* ============ GRIETAS Y PICADO ============ */
+mod('local','Grietas y picado','Corrosión por grietas (crevice) y por picado (pitting)',
+ 'Dos de las formas de corrosión localizada más traicioneras: ocurren bajo depósitos, juntas o pequeñas cavidades donde queda una solución estancada, y avanzan ocultas mientras el resto de la superficie permanece casi intacta.',
+ '#c92a2a','#fdeceb','#7d1a1a');
+H("Corrosión por grietas (crevice)");
+P("La corrosión por grietas o rendijas es un ataque localizado que ocurre dentro de grietas, rendijas u otras zonas protegidas donde se forma un pequeño volumen de solución estancada. Se origina típicamente en un ambiente de agua de mar: H<sub>2</sub>O, O<sub>2</sub>, Na<sup>+</sup> y Cl<sup>-</sup>, o en soluciones estancadas con cloruros o bromuros.");
+UL(["Condiciones típicas: agujeros, espacios bajo cabezas de perno o entre partes solapadas, medios porosos (empaques, madera, tela, arena), depósitos de suciedad o productos de corrosión, gotas de agua o líneas de agua","La concentración de cloruro dentro de una grieta puede ser de 3 a 10 veces mayor que en el entorno, y el pH puede caer de 7 a 2-3"]);
+NOTE("Caso real: un tanque de acero inoxidable 18-8 para una solución salina funcionaba bien, pero al caer accidentalmente un perno de acero inoxidable al fondo, se desarrolló un ataque rápido bajo el perno en poco tiempo, causando una fuga.","warn","Ojo");
+H("Cómo minimizar la corrosión por grietas");
+UL(["Usar juntas soldadas a tope en vez de uniones remachadas o atornilladas","Sellar las grietas con soldadura continua","Limpieza regular y completo drenaje para evitar estancamiento","Filtrar o cribar el flujo para retirar sólidos en suspensión","Usar empaques no absorbentes, como teflón, cuando sea posible","Usar aleaciones resistentes a la corrosión por grietas, como titanio o aleaciones de alto níquel"]);
+H("Corrosión por picado (pitting)");
+P("El picado es una forma de corrosión muy localizada que produce cavidades u \"hoyos\" en el material. Se considera más peligroso que la corrosión uniforme porque es difícil de detectar, predecir y diseñar en su contra: un picado pequeño, con mínima pérdida total de metal, puede perforar por completo un componente.");
+TBL(["Etapa","Qué ocurre"],
+[["Iniciación","Comienza en irregularidades de la superficie: rayones, dislocaciones emergentes o heterogeneidades como inclusiones. Es muy frágil y los picados jóvenes son inestables"],
+["Crecimiento","El picado crece a una velocidad cada vez mayor, con un mecanismo idéntico al de la corrosión por grietas: es un proceso autocatalítico"]]);
+NOTE("En el ánodo, en el fondo del picado: M → M<sup>n+</sup> + ne<sup>-</sup>. En el cátodo, en la superficie circundante: O<sub>2</sub> + 2H<sub>2</sub>O + 4e<sup>-</sup> → 4OH<sup>-</sup>. Dentro del picado el pH puede bajar a 1-3 mientras afuera se mantiene entre 6 y 7.","info","Para recordar");
+H("Factores que favorecen el picado");
+UL(["Soluciones con cloruro o iones que contienen cloro: el agua de mar y los cloruros férrico y cúprico son agresivos pitters","Condiciones estancadas: a mayor velocidad de flujo, menor tendencia al picado","Los aceros inoxidables, como familia, son más susceptibles al picado que casi cualquier otro grupo de metales o aleaciones","Cr, Ni, Mo y N como elementos de aleación aumentan la resistencia al picado"]);
+NOTE("PREN = %Cr + 3.3 × (%Mo + 0.5%W) + 16 × %N. A mayor PREN, mayor resistencia al picado del acero inoxidable. El tipo 316 (con 2 % Mo) resiste mejor el picado que el tipo 304.","tip","Dato clave");
+H("Prevención y reparación del picado");
+UL(["Seleccionar metales y aleaciones con resistencia adecuada al picado para el entorno de servicio específico","Minimizar la concentración de cloruros en el entorno","Controlar la temperatura para que no alcance la temperatura crítica de picado del material","Aplicar recubrimientos protectores; pulir superficies accesibles, porque las superficies pulidas resisten mejor que las grabadas o esmeriladas"]);
+H("Ejercicios");
+MC("Un tanque de acero inoxidable 18-8 para solución salina funciona bien durante años, hasta que cae un perno de acero inoxidable al fondo del tanque. Poco después aparece una fuga justo bajo el perno. ¿Qué fenómeno explica mejor esta falla?",
+ ["Corrosión por grietas, por la solución estancada que quedó bajo el perno","Corrosión uniforme acelerada por el peso adicional del perno caído","Corrosión galvánica, porque el perno es de un metal distinto al tanque","Fatiga por corrosión, por el impacto mecánico de la caída del perno"],
+ "El espacio estrecho entre el perno y el fondo del tanque creó una grieta con solución estancada: el oxígeno se agotó dentro de la grieta, se volvió anódica frente al resto de la superficie, y el ataque avanzó rápido hasta perforar. El perno era del mismo material que el tanque, así que no hay par galvánico.",{s:"D889"});
+MC("¿Cuál de las siguientes condiciones reduce, en vez de favorecer, la aparición de corrosión por picado?",
+ ["Aumentar la velocidad de flujo del fluido sobre la superficie metálica","Mantener la solución estancada y sin movimiento durante mucho tiempo","Usar cloruro férrico o cúprico en contacto permanente con el metal","Dejar inclusiones no metálicas expuestas en la superficie del componente"],
+ "El picado está asociado a condiciones estancadas; aumentar la velocidad de flujo ayuda a pasivar la superficie, redistribuir el oxígeno y remover mecánicamente los óxidos, lo que reduce el ataque. Las otras tres opciones son condiciones que favorecen el picado.",{s:"D933"});
+VF("La corrosión por picado se considera, en general, más peligrosa que la corrosión uniforme porque es más difícil de detectar y predecir, aunque la pérdida total de masa sea mínima.",true,
+ "Verdadero. Un picado pequeño y localizado puede perforar un componente con una pérdida de peso casi insignificante, y por eso es más difícil de anticipar que la pérdida gradual y visible de la corrosión uniforme.",{s:"D301"});
+VF("El acero inoxidable tipo 316 resiste mejor el picado que el tipo 304 porque contiene una mayor proporción de níquel.",false,
+ "Falso. La mejor resistencia al picado del tipo 316 frente al 304 se debe principalmente a la adición de alrededor de 2 % de molibdeno, no al níquel.",{s:"D952"});
+FILL("Completa el texto con las palabras del recuadro.","Dentro de una grieta o de un picado activo, el {oxígeno} se agota y la zona se vuelve {anódica} frente a la superficie circundante; el pH interior puede caer hasta valores de {1} a {3}.",["oxígeno","anódica","1","3","catódica"],
+ "La zona confinada se empobrece de oxígeno y se vuelve anódica frente al resto de la superficie, lo que genera un ambiente ácido con pH tan bajo como 1 a 3 dentro de la cavidad.",{s0:"D982,D986"});
+MATCH("Relaciona cada medida de prevención con la forma de corrosión localizada que ataca principalmente.",[
+ ["Usar juntas soldadas a tope en vez de atornilladas","Corrosión por grietas"],
+ ["Pulir la superficie para dejarla más lisa","Corrosión por picado"],
+ ["Aumentar el PREN de la aleación con Cr, Mo y N","Corrosión por picado"],
+ ["Filtrar el flujo para retirar sólidos en suspensión","Corrosión por grietas"]],
+ "Las juntas soldadas y el filtrado eliminan los espacios y depósitos que originan grietas; pulir la superficie y subir el PREN atacan directamente la susceptibilidad al picado.",{s:"D37,D53"});
+SORT("Clasifica cada condición según si corresponde típicamente a corrosión por grietas o a corrosión por picado.",["Corrosión por grietas","Corrosión por picado"],[
+ ["Espacio bajo la cabeza de un perno o bajo un empaque",0],
+ ["Rayón superficial que rompe la película pasiva",1],
+ ["Depósito de suciedad bajo el cual queda agua estancada",0],
+ ["Inclusión no metálica que inicia el ataque",1],
+ ["Zona bajo una arandela o entre placas solapadas",0],
+ ["Cavidad hemisférica o en forma de copa en la superficie libre",1]],
+ "La corrosión por grietas se asocia a espacios confinados (bajo pernos, empaques, depósitos); el picado se inicia en irregularidades puntuales de una superficie libre, como rayones o inclusiones, y crece como cavidades.",{s:"D884,D963"});
+OPEN("Una placa de acero inoxidable 316 queda sumergida en agua de mar durante meses, unida con un empaque de fibra absorbente bajo una brida. Explica qué forma de corrosión es más probable que aparezca primero y por qué el material elegido no basta para evitarla.",
+ ["Identifica la corrosión por grietas como la más probable, por el empaque absorbente bajo la brida","Explica que el 316 resiste bien el picado en superficie libre, pero los aceros inoxidables como familia son muy pobres resistiendo la corrosión por grietas","Propone una alternativa: empaque no absorbente tipo teflón, o un diseño sin crevice"],
+ "<p>Lo más probable es <b>corrosión por grietas</b>, no picado en superficie libre: el empaque absorbente retiene solución estancada bajo la brida, creando justo el microambiente de bajo oxígeno y alta concentración de cloruro que inicia este tipo de ataque.</p><p>El 316 es un buen resistente al picado en superficie libre gracias al molibdeno, pero los aceros inoxidables como familia son muy pobres resistiendo la corrosión por grietas; se necesitaría además cambiar el empaque absorbente por uno no absorbente, como teflón, o rediseñar la unión para eliminar el espacio confinado.</p>",
+ {s:"D879,D900,D909"});
+
+/* ============ EROSIÓN, CAVITACIÓN, IMPACTO Y FRETTING ============ */
+mod('mecanica','Erosión y desgaste','Corrosión por erosión, cavitación, impacto y fretting',
+ 'Aquí la corrosión no actúa sola: se combina con un efecto mecánico (fricción, impacto, vibración o colapso de burbujas) que acelera el ataque mucho más allá de lo que cualquiera de los dos fenómenos haría por separado. Es la tribocorrosión.',
+ '#1971c2','#e7f3ff','#0b4a85');
+H("Tribocorrosión: la idea central");
+P("La tribocorrosión, o corrosión asistida mecánicamente, es la degradación de la superficie de un material expuesta a la acción sinérgica combinada de carga mecánica y ataque corrosivo del ambiente. Incluye corrosión por erosión, por abrasión, por desgaste por deslizamiento y por fricción (fretting).");
+H("Corrosión por erosión");
+P("Es el resultado combinado del ataque químico y la abrasión mecánica. El daño aparece como surcos, ondas o agujeros que siguen la dirección del flujo. Se presenta típicamente en hélices submarinas, interiores de bombas de lodo, cascos de embarcaciones rápidas y tuberías de alto flujo.");
+UL(["Ubicaciones críticas: codos y uniones (por la aceleración angular), reducciones súbitas de diámetro (alta velocidad), aumentos súbitos de diámetro (turbulencia), válvulas (velocidad más turbulencia)","Metales susceptibles: los que dependen de una película superficial protectora y tienen baja dureza, como Al, Pb y Cu, además de los aceros inoxidables"]);
+NOTE("Cuidado al predecir la resistencia a la erosión solo con base en la dureza: una alta dureza no garantiza por sí sola una buena resistencia a la corrosión por erosión.","warn","Ojo");
+H("Cavitación e impacto (impingement)");
+UL(["Cavitación: ocurre cuando la presión del fluido cae por debajo de su presión de vapor, formando burbujas que colapsan generando pulsos de presión de hasta 400 MPa; es frecuente en impulsores de bombas centrífugas con agua ultrapura","Impacto (impingement): la corrosión aumenta por el impacto de remolinos turbulentos sobre la superficie, que retiran el producto de corrosión y permiten que el ataque activo continúe; se caracteriza por picaduras en forma de herradura"]);
+H("Minimizar la erosión y la cavitación");
+UL(["Materiales: endurecimiento por solución sólida, hierro con alto contenido de silicio para líneas de lodo","Ambiente: filtrar o decantar sólidos en suspensión, usar inhibidores, reducir la temperatura","Diseño: aumentar el diámetro de tubería para bajar la velocidad y promover flujo laminar, usar codos aerodinámicos, revestir con un segundo metal en zonas críticas (cuidado con crear corrosión galvánica), dejar superficies muy lisas para reducir la nucleación de vapor"]);
+H("Fretting (corrosión por fricción)");
+P("El fretting es un daño que ocurre entre dos superficies metálicas sometidas a deslizamientos cíclicos de amplitud muy pequeña, generalmente por vibración. Produce un polvo fino de óxido (rojizo en aceros, oscuro en aluminio) y picaduras bajo la zona de contacto.");
+UL(["Lugares típicos: ajustes entre ejes y rodamientos, uniones estriadas, pernos y remaches de estructuras vibrantes, raíces de álabes de turbina, conectores eléctricos, implantes ortopédicos (cabeza femoral y vástago), hebras internas de cables de acero"]);
+NOTE("El fretting es especialmente peligroso porque actúa como iniciador de grietas de fatiga, lo que puede llevar a una fractura catastrófica mucho antes de lo previsto por el diseño.","warn","Ojo");
+H("Prevención del fretting");
+UL(["Eliminar el deslizamiento por diseño","Cuando el deslizamiento es inevitable, reducir la concentración de esfuerzos en las zonas afectadas","Usar lubricantes para dificultar el acceso del oxígeno y reducir el coeficiente de fricción","Elegir tratamientos superficiales adecuados"]);
+H("Ejercicios");
+MC("Un álabe de turbina en su unión tipo \"cola de milano\" con el disco del rotor presenta polvo rojizo fino y picaduras bajo la zona de apoyo, sin que las piezas se hayan movido de forma visible entre sí. ¿Qué fenómeno describe mejor este daño?",
+ ["Fretting, causado por microdeslizamientos cíclicos inducidos por vibración","Cavitación, causada por el colapso de burbujas de vapor en el álabe","Corrosión por impacto (impingement), causada por remolinos turbulentos","Corrosión uniforme, causada por la exposición prolongada al aire caliente"],
+ "El polvo fino de óxido y las picaduras bajo una zona de apoyo que parece inmóvil son la firma clásica del fretting: la vibración genera micro-deslizamientos de amplitud mínima entre las superficies en contacto a presión, como en las raíces de álabes de turbina.",{s:"D1297"});
+MC("¿Cuál de las siguientes es la medida de diseño más efectiva, entre las mencionadas, para reducir la erosión corrosión en una tubería de alto flujo?",
+ ["Aumentar el diámetro de la tubería para reducir la velocidad y favorecer flujo laminar","Reducir el diámetro de la tubería para aumentar la velocidad del fluido","Eliminar por completo los codos y sustituirlos siempre por uniones en ángulo recto","Aumentar deliberadamente la rugosidad interna de la tubería"],
+ "Aumentar el diámetro reduce la velocidad del fluido y favorece el flujo laminar sobre el turbulento, lo que disminuye la erosión corrosión. Reducir el diámetro, usar ángulos rectos bruscos o aumentar la rugosidad son todas prácticas que agravan el problema.",{s:"D1253"});
+VF("La cavitación es un caso particular de corrosión por erosión asociado al colapso de burbujas de vapor a muy alta velocidad de flujo.",true,
+ "Verdadero. La cavitación es una forma especial de erosión corrosión, observada en componentes que se mueven a muy alta velocidad a través de un fluido, causada por la formación y el colapso de burbujas de vapor.",{s:"D1160"});
+VF("Una alta dureza de un material siempre garantiza una alta resistencia a la corrosión por erosión.",false,
+ "Falso. La guía advierte explícitamente que una alta dureza no garantiza por sí sola una buena resistencia a la erosión corrosión; el diseño y la selección de material deben considerarse en conjunto.",{s:"D167"});
+MATCH("Relaciona cada mecanismo con su ubicación o escenario típico.",[
+ ["Cavitación","Impulsores de bombas centrífugas con agua ultrapura"],
+ ["Fretting","Hebras internas de un cable de acero que vibra bajo carga"],
+ ["Corrosión por impacto (impingement)","Codos de tubería con remolinos turbulentos"],
+ ["Corrosión por erosión","Hélices de embarcaciones a alta velocidad"]],
+ "Cada mecanismo tiene escenarios característicos: la cavitación en zonas de baja presión con agua ultrapura, el fretting en superficies que vibran bajo carga, el impacto en remolinos turbulentos, y la erosión en superficies de alto flujo relativo como hélices.",{s:"D1160,D1203,D1268"});
+SORT("Clasifica cada característica según el mecanismo de daño con el que se asocia principalmente.",["Fretting","Cavitación","Erosión por flujo"],[
+ ["Picaduras en forma de herradura por remolinos turbulentos",2],
+ ["Pulsos de presión de hasta 400 MPa por colapso de burbujas",1],
+ ["Polvo fino de óxido rojizo bajo una zona de apoyo vibrante",0],
+ ["Surcos y agujeros que siguen la dirección del flujo",2],
+ ["Daño en implantes ortopédicos por microdeslizamiento",0],
+ ["Deformación plástica local por colapso de vapor a alta presión",1]],
+ "Fretting: micro-deslizamiento, polvo de óxido, implantes. Cavitación: colapso de burbujas, pulsos de presión muy altos, deformación plástica. Erosión por flujo: picaduras en herradura por impacto turbulento y surcos siguiendo el flujo.",{s:"D1160,D1198,D1267"});
+FILL("Completa el texto con las palabras del recuadro.","La tribocorrosión combina una carga {mecánica} con un ataque {corrosivo} del ambiente; el {fretting} ocurre por microdeslizamientos cíclicos de muy baja amplitud, generalmente causados por {vibración}.",["mecánica","corrosivo","fretting","vibración","picado"],
+ "La tribocorrosión es la suma de un esfuerzo mecánico y un ataque corrosivo; el fretting es uno de sus tipos, producido por deslizamientos cíclicos muy pequeños, típicamente por vibración.",{s0:"D1099,D1268"});
+OPEN("Un conector eléctrico en un vehículo empieza a fallar de forma intermitente después de meses de uso en una zona de alta vibración del motor. Al abrirlo, se observa un polvo oscuro entre los pines y el receptáculo, y la resistencia eléctrica de la conexión ha aumentado. Explica la causa más probable y una medida de prevención.",
+ ["Identifica el fretting como causa más probable, por la vibración constante del motor","Explica que la vibración rompe la capa de chapado (estaño u oro) y oxida el metal base, aumentando la resistencia eléctrica y causando fallas intermitentes","Propone una medida de prevención: reducir el deslizamiento por diseño, usar lubricante o mejorar la sujeción del conector"],
+ "<p>La causa más probable es <b>fretting corrosion</b>: la vibración constante del motor provoca microdeslizamientos entre los pines del conector y su receptáculo, lo que rompe la capa de chapado protector (estaño u oro), oxida el metal base y produce el polvo oscuro observado, además de aumentar la resistencia eléctrica y causar fallas intermitentes.</p><p>Como prevención: fijar mejor el conector para eliminar el deslizamiento, usar lubricante para reducir la fricción y dificultar el acceso de oxígeno, o especificar chapados más resistentes al desgaste.</p>",
+ {s:"D1301,D1330"});
+
+/* ============ INTERGRANULAR Y LIXIVIACIÓN SELECTIVA ============ */
+mod('intergranular','Intergranular y lixiviación','Corrosión intergranular y lixiviación selectiva (dealloying)',
+ 'Dos formas en las que la microestructura del metal, no solo el ambiente, decide dónde ocurre el ataque: a lo largo de los límites de grano en un caso, o removiendo selectivamente un elemento de una aleación en el otro.',
+ '#5f3dc4','#efe8fb','#3e2680');
+H("Corrosión intergranular");
+P("Es un ataque localizado que ocurre preferentemente a lo largo de los límites de grano dentro de un metal, mientras el interior de los granos permanece prácticamente intacto. Los límites de grano tienen mayor energía libre, mayor segregación química y mayor concentración de impurezas, lo que los vuelve anódicos frente al resto del grano.");
+H("Sensibilización de aceros inoxidables austeníticos");
+P("Entre 400 y 850 °C, los aceros inoxidables austeníticos tienden a formar precipitados de carburo de cromo (Cr<sub>23</sub>C<sub>6</sub>) en los límites de grano, lo que empobrece localmente el cromo. Las zonas empobrecidas quedan anódicas frente al resto del grano y se corroen preferencialmente. Una causa muy común de sensibilización es la soldadura, fenómeno conocido como <b>weld decay</b> (deterioro por soldadura).");
+UL(["Grados L (bajo carbono): 304L, 317L, 316L, con menos de 0.03 % de carbono","Elementos estabilizadores, fuertes formadores de carburo: niobio y tantalio (tipo 347), titanio (tipo 321)","Soldadura por arco eléctrico en vez de soldadura por flama: ciclo de calentamiento más rápido y zona afectada por el calor más angosta","Corte por láser en vez de corte oxi-flama"]);
+NOTE("En aceros inoxidables austeníticos, el titanio o el niobio pueden reaccionar con el carbono en la zona afectada por el calor (HAZ) y formar carburos junto al cordón de soldadura, un tipo específico de corrosión intergranular llamado <b>knife-line attack</b> (ataque en línea de cuchillo). Se corrige recalentando el metal soldado para permitir la difusión.","info","Para recordar");
+H("Lixiviación selectiva (dealloying)");
+P("La lixiviación selectiva, también llamada dealloying o parting, es la remoción preferencial de un elemento de una aleación, dejando una matriz más pobre en ese elemento y, en general, mecánicamente más débil, aunque la pieza conserve su forma externa.");
+TBL(["Ejemplo","Qué ocurre"],
+[["Dezincificación del latón amarillo","El zinc se disuelve preferencialmente, dejando una estructura porosa de cobre más débil"],
+["Grafitización del hierro fundido gris","El hierro se disuelve preferencialmente por una reacción galvánica entre el grafito y el hierro; el grafito es catódico frente al hierro, y queda un esqueleto de grafito frágil que conserva la forma pero pierde resistencia"]]);
+UL(["Mejor resistencia a la dezincificación: latón rojo (85-15 % Zn) y aleaciones con inhibidores como Sn, As o P","El bronce de aluminio y el bronce de silicio también sufren lixiviación selectiva, porque Al, Si y Zn son anódicos frente al Cu","El uso de hierro nodular o maleable evita eficazmente la grafitización en tuberías de agua subterráneas"]);
+NOTE("La grafitización se detecta raspando la superficie con un cuchillo: si se desmorona revelando un esqueleto de grafito, confirma el diagnóstico. Es un daño muy costoso en tuberías de agua de gran diámetro enterradas.","tip","Dato clave");
+H("Ejercicios");
+MC("Una tubería de latón amarillo, tras años en servicio, presenta zonas de color rojizo cobrizo, en vez de su color amarillo original, y se ha vuelto porosa y débil en esas zonas. ¿Qué fenómeno explica mejor este cambio?",
+ ["Dezincificación: el zinc se disolvió preferencialmente dejando una matriz porosa de cobre","Grafitización: el hierro se disolvió preferencialmente dejando un esqueleto de grafito","Corrosión intergranular por sensibilización durante una soldadura reciente","Corrosión por picado causada por altas concentraciones locales de cloruro"],
+ "El color rojizo cobrizo y la porosidad son la firma clásica de la dezincificación del latón: el zinc, menos noble, se disuelve preferencialmente y deja atrás una estructura más pobre en zinc y mecánicamente más débil.",{s:"D1415"});
+MC("Una soldadura reciente en un acero inoxidable austenítico tipo 304 queda expuesta, meses después, a un ataque localizado justo en una banda estrecha adyacente al cordón de soldadura. ¿Cuál es la causa más probable?",
+ ["Sensibilización por precipitación de carburos de cromo en los límites de grano de la zona afectada por el calor","Dezincificación, porque el acero contiene zinc como elemento de aleación","Cavitación, generada por el colapso de burbujas durante el proceso de soldadura","Corrosión filiforme, por humedad relativa superior al 60 % durante el almacenamiento"],
+ "El calor de la soldadura puede sensibilizar el acero inoxidable austenítico entre 400 y 850 °C, precipitando carburos de cromo en los límites de grano y empobreciendo el cromo en esa zona, lo que es conocido como weld decay. El acero inoxidable no contiene zinc, y los otros dos mecanismos no son coherentes con este patrón.",{s:"D1357,D1362"});
+VF("Usar un grado L de acero inoxidable, como el 316L, reduce el riesgo de sensibilización durante la soldadura en comparación con un grado estándar como el 316.",true,
+ "Verdadero. Los grados L tienen menos de 0.03 % de carbono, frente al 0.06-0.15 % de los grados estándar, lo que reduce la disponibilidad de carbono para formar carburos de cromo en los límites de grano durante el calentamiento.",{s:"D1370"});
+VF("El titanio y el niobio se usan como elementos estabilizadores en aceros inoxidables porque evitan por completo cualquier tipo de corrosión intergranular, incluido el knife-line attack.",false,
+ "Falso. El titanio y el niobio estabilizan el acero al formar carburos preferentemente con ellos en vez del cromo, pero precisamente esa reacción junto al cordón de soldadura puede producir el knife-line attack, un tipo específico de corrosión intergranular.",{s:"D1371,D1372"});
+MATCH("Relaciona cada término con su definición correcta.",[
+ ["Weld decay","Sensibilización de un acero inoxidable causada por el calor de la soldadura"],
+ ["Knife-line attack","Corrosión intergranular junto al cordón, por carburos de Ti o Nb en la HAZ"],
+ ["Dezincificación","Disolución preferencial del zinc en una aleación de latón"],
+ ["Grafitización","Disolución preferencial del hierro en hierro fundido gris, por reacción galvánica con el grafito"]],
+ "Cada término describe un mecanismo específico: weld decay es la sensibilización general por soldadura; el knife-line attack es un caso particular junto al cordón; la dezincificación y la grafitización son ejemplos de lixiviación selectiva en latón y hierro fundido respectivamente.",{s:"D1362,D1371,D1432,D1436"});
+SORT("Clasifica cada medida de prevención según si corresponde principalmente a corrosión intergranular o a lixiviación selectiva.",["Corrosión intergranular","Lixiviación selectiva"],[
+ ["Usar grados L de acero inoxidable (bajo carbono)",0],
+ ["Usar latón rojo con 85-15 % de zinc",1],
+ ["Soldar por arco eléctrico en vez de soldadura por flama",0],
+ ["Usar hierro nodular o maleable en vez de hierro fundido gris",1],
+ ["Estabilizar con titanio o niobio",0],
+ ["Alear con inhibidores como estaño, arsénico o fósforo",1]],
+ "Los grados L, la soldadura por arco y la estabilización con Ti o Nb atacan la sensibilización intergranular; el latón rojo, el hierro nodular y los inhibidores de aleación atacan la lixiviación selectiva.",{s:"D1370,D1409,D1440"});
+FILL("Completa el texto con las palabras del recuadro.","La corrosión intergranular ocurre a lo largo de los {límites} de grano, que quedan {anódicos} frente al resto del grano por segregación o precipitación; en la soldadura, este fenómeno se llama {sensibilización} o weld decay.",["límites","anódicos","sensibilización","catódicos","dezincificación"],
+ "Los límites de grano concentran impurezas y precipitados que los vuelven anódicos frente al resto del grano; cuando esto ocurre por el calor de la soldadura en acero inoxidable, se llama sensibilización o weld decay.",{s0:"D1345,D1360"});
+OPEN("Una pieza de hierro fundido gris, enterrada por décadas como tubería de agua, conserva su forma externa pero se rompe con facilidad ante un pequeño movimiento del terreno. Al rasparla con un cuchillo, la superficie se desmorona. Explica el fenómeno y una medida de prevención para futuras instalaciones.",
+ ["Identifica la grafitización como el fenómeno responsable","Explica que el hierro se disuelve preferencialmente por una celda galvánica con el grafito, que es catódico, dejando un esqueleto de grafito frágil que conserva la forma pero pierde resistencia","Propone usar hierro nodular o maleable en las nuevas instalaciones"],
+ "<p>El fenómeno es <b>grafitización</b>, un tipo de lixiviación selectiva del hierro fundido gris: el grafito es catódico frente al hierro, formando excelentes celdas galvánicas internas que disuelven preferencialmente el hierro y dejan un esqueleto frágil de grafito, que conserva la forma original pero pierde casi toda su resistencia mecánica, de ahí que se desmorone al rasparla y se rompa ante un movimiento del terreno.</p><p>Para instalaciones futuras, la medida más efectiva es usar hierro nodular o maleable en vez de hierro fundido gris, ya que son mucho más resistentes a este tipo de ataque.</p>",
+ {s:"D1432,D1440"});
+
+/* ============ AGRIETAMIENTO AMBIENTAL ============ */
+mod('ambiental','Agrietamiento ambiental','SCC, fatiga por corrosión y fragilización por hidrógeno',
+ 'Son las formas más temidas de corrosión: con mínima pérdida de masa y casi sin aviso visual, pueden producir una fractura frágil y catastrófica. Requieren verificación microscópica para confirmarse (grupo 3 de la clasificación).',
+ '#a61e4d','#fdebf2','#7a1638');
+H("Agrietamiento por corrosión bajo tensión (SCC)");
+P("El SCC es el agrietamiento causado por la acción combinada de un esfuerzo de tensión y un ambiente corrosivo. Ocurre solo en combinaciones específicas de material y ambiente, por ejemplo: aceros inoxidables en soluciones con cloruro entre 50 y 60 °C, aceros al carbono en soluciones cáusticas, aleaciones de aluminio en soluciones con cloruro, o latones en atmósfera de amoníaco.");
+UL(["El esfuerzo requerido suele ser mucho menor que el esfuerzo de falla del metal en ausencia del ambiente corrosivo","El ambiente, por sí solo, a veces no es muy corrosivo para ese metal; es la combinación de los dos factores la que causa el daño","Las grietas pueden ser intergranulares o transgranulares, y macroscópicamente la fractura tiene apariencia frágil"]);
+NOTE("El SCC por cloruro en acero inoxidable austenítico se caracteriza por un patrón de grietas transgranulares muy ramificado, descrito como \"rayo\" (lightning bolt), y siempre ocurre en el sitio donde actúa el esfuerzo de tensión.","info","Para recordar");
+H("Fuentes de esfuerzo y prevención del SCC");
+UL(["Esfuerzos residuales: soldadura, trabajo en frío, tratamiento térmico, colado","Esfuerzos aplicados: gravedad, ensamblaje mecánico, variación de temperatura","Prevención: evitar la combinación peligrosa metal-ambiente, eliminar el esfuerzo de tensión (alivio de esfuerzos, esfuerzo residual compresivo), reducir la corrosividad del ambiente, aplicar protección catódica con precaución frente a la fragilización por hidrógeno"]);
+H("Fatiga por corrosión");
+P("Es la capacidad reducida de un metal para resistir esfuerzos repetidos (cíclicos) cuando se expone, al mismo tiempo, a un ambiente corrosivo. A diferencia del SCC, puede ocurrir en cualquier ambiente, no solo en combinaciones específicas; las grietas son transgranulares y no muestran la ramificación característica del SCC.");
+UL(["No existe un límite de fatiga verdadero bajo corrosión: a diferencia de la fatiga mecánica pura, el nivel de esfuerzo seguro tiende a cero con el tiempo","Suele producir múltiples grietas paralelas en la superficie, a veces cerca de uniones soldadas","Se detecta con pruebas ultrasónicas y de partículas magnéticas","Se mitiga reduciendo generadores de esfuerzo, usando aleaciones más resistentes, recubrimientos, inhibidores, o un tratamiento térmico posterior a la soldadura para reducir esfuerzos residuales"]);
+H("Fragilización por hidrógeno y daño por hidrógeno");
+P("El hidrógeno que ingresa a un metal puede reducir gravemente su ductilidad y su capacidad de carga, provocando grietas y fallas frágiles catastróficas a esfuerzos por debajo del esfuerzo de cedencia del material. Los más vulnerables son los aceros de alta resistencia, las aleaciones de titanio y las aleaciones de aluminio.");
+TBL(["Forma de daño por hidrógeno","Qué ocurre"],
+[["Fragilización por hidrógeno","El hidrógeno atómico se difunde en el metal y, bajo esfuerzo de tensión, favorece el agrietamiento frágil"],
+["Ampollamiento (blistering)","Micro-burbujas de hidrógeno a muy alta presión (varios cientos de miles de atmósferas) se forman dentro del metal; frecuente en la industria del petróleo"],
+["Ataque por hidrógeno / descarburización","A alta temperatura, el carbono del acero reacciona con el hidrógeno formando metano (CH<sub>4</sub>) en microvacíos, generando presión interna y fragilización; típico entre 250 y 600 °C"]]);
+UL(["Fuentes de hidrógeno atómico: el propio proceso de corrosión, la protección catódica mal controlada, la soldadura, la electrólisis y el electrodepositado","A diferencia del SCC, la corriente catódica (protección catódica) suprime el SCC pero puede favorecer la fragilización por hidrógeno"]);
+H("Prevención del daño por hidrógeno");
+UL(["Usar aceros \"limpios\": aceros calmados (killed steels), con una estructura libre de microvacíos","Recubrimientos impermeables al hidrógeno, o aleaciones resistentes con baja difusión de hidrógeno, como las que contienen níquel","Horneado (baking) a 100-150 °C para remover el hidrógeno disuelto, ya que la absorción de hidrógeno en metales es reversible","Control de procesos: decapado, electrodepositado y soldadura con bajo hidrógeno"]);
+H("Ejercicios");
+MC("Una tubería de acero al carbono en una solución cáustica presenta, tras años de servicio, grietas finas que penetran el material con un aspecto macroscópicamente frágil, mientras la mayor parte de la superficie permanece sin ataque visible. ¿Qué fenómeno describe mejor este daño?",
+ ["Agrietamiento por corrosión bajo tensión (SCC), favorecido por la combinación acero al carbono-solución cáustica","Corrosión uniforme avanzada, por la exposición prolongada a la solución","Corrosión por picado, por la acumulación de cloruros en el fondo de la tubería","Fatiga por corrosión, por ciclos térmicos repetidos durante el arranque de la planta"],
+ "El acero al carbono en soluciones cáusticas es una de las combinaciones clásicas que producen SCC: grietas finas y de apariencia frágil, con la mayor parte de la superficie sin ataque visible, exactamente el patrón descrito.",{s:"D1458"});
+MC("¿Cuál es la diferencia principal entre la fatiga por corrosión y el agrietamiento por corrosión bajo tensión (SCC)?",
+ ["La fatiga por corrosión requiere esfuerzo cíclico y puede ocurrir en cualquier ambiente; el SCC requiere combinaciones específicas de metal y ambiente","La fatiga por corrosión nunca produce grietas transgranulares, mientras el SCC siempre las produce","El SCC solo ocurre en aceros al carbono, mientras la fatiga por corrosión solo ocurre en aceros inoxidables","La fatiga por corrosión no necesita ningún tipo de esfuerzo mecánico, solo el ambiente corrosivo"],
+ "La fatiga por corrosión es similar al SCC, pero el esfuerzo es cíclico en vez de sostenido, y puede darse en prácticamente cualquier ambiente, mientras el SCC exige combinaciones específicas de metal y ambiente, como acero inoxidable con cloruro caliente.",{s:"D1938,D1939"});
+VF("La protección catódica siempre es una medida de prevención completamente segura frente a cualquier forma de daño ambiental, sin ningún riesgo adicional.",false,
+ "Falso. Aunque la protección catódica es efectiva contra el SCC, debe aplicarse con precaución porque puede favorecer la fragilización por hidrógeno al introducir hidrógeno atómico en el metal.",{s:"D1884,D1885"});
+VF("El ataque por hidrógeno con formación de metano en microvacíos del acero es más probable a temperaturas por debajo de 200 °C que a temperaturas entre 250 y 600 °C.",false,
+ "Falso. El ataque por hidrógeno con formación de metano ocurre típicamente en aceros al carbono entre 250 y 600 °C; por debajo de 200 °C, los aceros al carbono prácticamente no son atacados por hidrógeno gaseoso, incluso a presiones relativamente altas.",{s:"D2345,D2403"});
+MATCH("Relaciona cada combinación metal-ambiente con el tipo de agrietamiento ambiental que favorece con mayor probabilidad.",[
+ ["Acero inoxidable en cloruro caliente (50-60 °C)","SCC por cloruro"],
+ ["Latón en atmósfera de amoníaco","SCC en aleaciones de cobre"],
+ ["Acero de alta resistencia con hidrógeno disuelto","Fragilización por hidrógeno"],
+ ["Componente con esfuerzo cíclico en ambiente corrosivo general","Fatiga por corrosión"]],
+ "Cada combinación corresponde a un escenario clásico: cloruro caliente con acero inoxidable, amoníaco con latón, hidrógeno disuelto con acero de alta resistencia, y esfuerzo cíclico en cualquier ambiente corrosivo para la fatiga por corrosión.",{s:"D1456,D1460"});
+SORT("Clasifica cada característica según la forma de agrietamiento ambiental a la que corresponde principalmente.",["SCC","Fatiga por corrosión","Fragilización por hidrógeno"],[
+ ["Patrón de grietas ramificado tipo \"rayo\" en acero inoxidable con cloruro",0],
+ ["Grietas transgranulares sin ramificación por esfuerzo cíclico",1],
+ ["Hidrógeno atómico que reduce la ductilidad del metal",2],
+ ["Requiere una combinación específica de metal y ambiente",0],
+ ["Puede ocurrir en prácticamente cualquier ambiente, siempre que haya ciclos",1],
+ ["Se agrava con la protección catódica mal controlada",2]],
+ "SCC: patrón ramificado tipo rayo, requiere combinación específica. Fatiga por corrosión: grietas transgranulares sin ramificar, ocurre en cualquier ambiente con esfuerzo cíclico. Fragilización por hidrógeno: pérdida de ductilidad, se agrava con protección catódica descontrolada.",{s:"D357,D1897,D1884"});
+FILL("Completa el texto con las palabras del recuadro.","El SCC requiere la combinación de un esfuerzo de {tensión} y un ambiente {corrosivo} específico; la fatiga por corrosión ocurre con esfuerzo {cíclico} en casi cualquier ambiente, y la fragilización por {hidrógeno} reduce la ductilidad del metal.",["tensión","corrosivo","cíclico","hidrógeno","compresivo"],
+ "El SCC necesita esfuerzo de tensión y un ambiente corrosivo específico; la fatiga por corrosión ocurre con esfuerzo cíclico en casi cualquier ambiente; el hidrógeno reduce la ductilidad y puede causar fractura frágil.",{s0:"D332,D1897,D2050"});
+OPEN("Un tanque de almacenamiento de amoníaco, construido en latón, presenta grietas finas junto a una boquilla soldada después de varios años en servicio, sin pérdida apreciable de espesor en el resto del tanque. Explica el fenómeno más probable y qué dos factores deben estar presentes para que ocurra.",
+ ["Identifica el SCC (agrietamiento por corrosión bajo tensión) como el fenómeno más probable","Explica que se necesita la combinación de un esfuerzo de tensión (por ejemplo, residual de la soldadura) y el ambiente corrosivo específico, en este caso amoníaco sobre latón","Menciona que la zona junto a la boquilla soldada es típica porque concentra esfuerzos residuales de la soldadura"],
+ "<p>El fenómeno más probable es <b>SCC</b> (agrietamiento por corrosión bajo tensión): el latón es clásicamente susceptible a este tipo de agrietamiento en presencia de amoníaco, y la zona junto a la boquilla soldada concentra esfuerzos residuales de la soldadura, justo el tipo de esfuerzo de tensión que el SCC necesita.</p><p>Se requieren dos factores simultáneos: un esfuerzo de tensión (aquí, residual de soldadura) y el ambiente corrosivo específico para esa aleación (amoníaco sobre latón); sin cualquiera de los dos, no habría agrietamiento, lo que explica por qué el resto del tanque no muestra pérdida de espesor.</p>",
+ {s:"D1460,D1476,D1509"});
+
+/* ============ FILIFORME Y MIC ============ */
+mod('mic','Filiforme y MIC','Corrosión filiforme y corrosión microbiológica (MIC)',
+ 'Dos formas de corrosión que dependen de condiciones muy particulares del entorno: una ocurre bajo una capa de pintura dañada, y la otra es impulsada por microorganismos vivos que se alimentan de la química del agua y del propio metal.',
+ '#0ca678','#e3f8f0','#086a52');
+H("Corrosión filiforme");
+P("La corrosión filiforme es el ataque sobre el sustrato metálico que ocurre bajo la capa de pintura, y se caracteriza por desarrollarse en forma de filamentos o hebras. Ocurre siempre en metales pintados, como acero, aluminio, magnesio y zinc. Se inicia en un defecto de la capa de pintura y avanza bajo ella en forma de hebras, formando ampollas por celdas de aireación diferencial, hasta terminar en el desprendimiento (spalling) del recubrimiento.");
+UL(["Factores que la favorecen: humedad relativa superior al 60 % (ambientes marinos), temperatura ambiente elevada, presencia de cloruros en el aire, presencia de ion sulfato","En acero, la permeabilidad al oxígeno del recubrimiento influye mucho en la velocidad de avance; en aluminio, la velocidad es casi independiente del tipo de pintura y avanza en forma arborescente, siguiendo las líneas de extrusión en aluminio extruido"]);
+NOTE("La prueba estándar de referencia para evaluar la resistencia a la corrosión filiforme en recubrimientos orgánicos es la norma ASTM D 2803; las muestras se exponen a niebla salina hasta 24 horas y luego a 25 °C y 85 % de humedad relativa, con tiempos de exposición de 100 a 1000 horas.","info","Para recordar");
+UL(["Industrias afectadas: componentes de aeronaves sujetos con pernos y remaches, puntos de iniciación comunes; aleaciones de aluminio 2024 y 7000 recubiertas con poliuretano en ambientes marinos cálidos","Prevención: guardar superficies recubiertas en ambientes de baja humedad por periodos cortos; usar recubrimientos de muy baja permeabilidad al agua, como dos capas de epoxi más dos de poliuretano"]);
+H("Corrosión microbiológicamente influenciada (MIC)");
+P("La MIC implica la interacción entre microorganismos (bacterias, hongos, algas), el medio corrosivo y el material. Las bacterias pueden ser aeróbicas (necesitan oxígeno) o anaeróbicas (no lo necesitan). Los microbios se adhieren a la superficie metálica mediante una sustancia exopolimérica que forma el limo bajo el cual se desarrolla la biopelícula; el metal se corroe por la acción metabólica del microorganismo.");
+UL(["Aleaciones susceptibles: aluminio, acero al carbono, acero inoxidable austenítico y latón; también afecta no metales como el hormigón y los plásticos","Las bacterias anaeróbicas reductoras de sulfato son causa común de MIC en aceros suaves: metabolizan el sulfato del fluido y lo convierten en H<sub>2</sub>S, que se acumula en la biopelícula","Condiciones que la favorecen: temperatura de 15 a 45 °C y pH de 6 a 8 en un medio acuoso"]);
+TBL(["Dónde se presenta","Por qué"],
+[["Bajo incrustaciones o sólidos sedimentados","Crea el microambiente protegido que necesita la biopelícula"],
+["Piernas muertas sin drenaje efectivo","El agua estancada favorece el crecimiento microbiano"],
+["Tuberías de baja velocidad","Permite que los sedimentos y la biopelícula se asienten"],
+["Fondo de tanques que nunca se drenan por completo","Queda agua residual permanente para sostener la biopelícula"]]);
+NOTE("La identificación de MIC usa métodos moleculares como qPCR, DGGE y secuenciación metagenómica, que requieren muestras pequeñas y no necesitan microorganismos vivos; para tuberías, la norma NACE TM0212 describe los métodos de evaluación.","tip","Dato clave");
+H("Prevención de la MIC");
+UL(["Muestreo: análisis de biopelículas y de la química del agua","Evaluación de los principales agentes metabólicos, como las bacterias reductoras de azufre","Mitigación con biocidas e inhibidores adecuados","Supervisión y monitoreo permanentes, porque la química del proceso puede cambiar la eficacia de los aditivos","Recubrir tuberías enterradas, minimizando áreas de recubrimiento desunido o con poros; la protección catódica también puede ayudar"]);
+H("Ejercicios");
+MC("Una estructura de aluminio recubierta con poliuretano, almacenada en un ambiente marino cálido con humedad relativa frecuente por encima del 60 %, desarrolla filamentos bajo la pintura que avanzan desde un pequeño defecto del recubrimiento. ¿Qué fenómeno describe mejor este daño?",
+ ["Corrosión filiforme, favorecida por la alta humedad relativa y el defecto en el recubrimiento","Corrosión microbiológicamente influenciada (MIC), por bacterias reductoras de sulfato","Corrosión por picado, iniciada por una inclusión no metálica en el aluminio","Grafitización, por la presencia de grafito en la matriz de aluminio"],
+ "El patrón de filamentos que avanzan bajo la pintura desde un defecto, favorecido por humedad relativa superior al 60 % en ambiente marino, es la firma característica de la corrosión filiforme, muy relevante en aluminio recubierto con poliuretano.",{s:"D2899,D2918"});
+MC("¿Cuál de las siguientes condiciones favorece con mayor probabilidad el desarrollo de corrosión microbiológicamente influenciada (MIC) en una tubería?",
+ ["Una pierna muerta sin drenaje efectivo, con agua estancada durante periodos largos","Un tramo de tubería con flujo turbulento y alta velocidad constante","Una temperatura sostenida por encima de 80 °C en toda la línea","Un pH ácido extremo, por debajo de 2, mantenido todo el tiempo"],
+ "Las piernas muertas sin drenaje efectivo acumulan agua estancada, condición ideal para que se forme y sostenga la biopelícula microbiana. La MIC se favorece en rangos moderados de temperatura (15-45 °C) y pH (6-8), no en condiciones extremas de temperatura o pH, ni con flujo turbulento constante.",{s:"D3018,D3025"});
+VF("La corrosión filiforme puede ocurrir en metales sin ningún tipo de recubrimiento o pintura, directamente sobre el metal desnudo.",false,
+ "Falso. La corrosión filiforme ocurre siempre en metales pintados: se inicia en un defecto de la capa de pintura y avanza bajo ella, por lo que necesita esa capa protectora dañada como condición de partida.",{s:"D2903"});
+VF("Las bacterias responsables de la MIC pueden ser tanto aeróbicas como anaeróbicas, dependiendo de si necesitan oxígeno para su actividad corrosiva.",true,
+ "Verdadero. La MIC involucra bacterias aeróbicas, que requieren oxígeno para activarse, y bacterias anaeróbicas, que no lo requieren; las reductoras de sulfato son anaeróbicas y muy comunes en aceros suaves.",{s:"D2987,D3002"});
+MATCH("Relaciona cada concepto con la forma de corrosión a la que corresponde.",[
+ ["Avance en forma de hebras bajo una capa de pintura dañada","Corrosión filiforme"],
+ ["Biopelícula sostenida por una sustancia exopolimérica","Corrosión microbiológica (MIC)"],
+ ["Norma ASTM D 2803 para evaluar resistencia en recubrimientos","Corrosión filiforme"],
+ ["Bacterias reductoras de sulfato que producen H2S","Corrosión microbiológica (MIC)"]],
+ "La corrosión filiforme se relaciona con recubrimientos dañados y su norma de evaluación específica; la MIC se relaciona con biopelículas y el metabolismo bacteriano, como la reducción de sulfato a H2S.",{s:"D2899,D2952,D3002"});
+SORT("Clasifica cada condición ambiental según si favorece principalmente la corrosión filiforme o la corrosión microbiológica (MIC).",["Corrosión filiforme","MIC"],[
+ ["Humedad relativa superior al 60 % sobre metal pintado",0],
+ ["pH de 6 a 8 en un medio acuoso a 15-45 °C",1],
+ ["Presencia de iones sulfato en el aire sobre una superficie pintada",0],
+ ["Piernas muertas sin drenaje en una línea de proceso",1],
+ ["Defecto microscópico en una capa de pintura o laca",0],
+ ["Depósitos sedimentados que protegen una biopelícula",1]],
+ "La corrosión filiforme depende de humedad, cloruros o sulfatos en el aire y defectos del recubrimiento pintado; la MIC depende de condiciones de pH y temperatura moderadas, agua estancada y depósitos que protegen la biopelícula.",{s:"D2918,D3018"});
+FILL("Completa el texto con las palabras del recuadro.","La corrosión filiforme se inicia en un {defecto} de la capa de pintura y avanza en forma de {filamentos}; la MIC depende de una {biopelícula} sostenida por microorganismos como las bacterias reductoras de {sulfato}.",["defecto","filamentos","biopelícula","sulfato","picado"],
+ "La corrosión filiforme parte de un defecto puntual de la pintura y avanza como filamentos bajo ella; la MIC depende de la biopelícula microbiana, frecuentemente sostenida por bacterias reductoras de sulfato.",{s0:"D2906,D3002"});
+OPEN("Una línea de proceso que transportó agua de río para una prueba hidráulica queda con residuos de agua por un drenaje incompleto. Meses después, se detecta picado severo justo en esa zona, asociado a una biopelícula. Explica el mecanismo más probable y dos medidas de control recomendadas.",
+ ["Identifica la MIC como mecanismo más probable, favorecida por el agua residual tras la prueba hidráulica","Explica que los microorganismos forman una biopelícula adherida con sustancia exopolimérica y corroen el metal por su acción metabólica, por ejemplo bacterias reductoras de sulfato generando H2S","Propone medidas: muestreo y análisis de la química del agua, uso de biocidas e inhibidores, y monitoreo permanente"],
+ "<p>El mecanismo más probable es <b>corrosión microbiológicamente influenciada (MIC)</b>: el agua residual de la prueba hidráulica, no drenada por completo, crea justo la condición de agua estancada que permite que los microorganismos formen una biopelícula adherida mediante una sustancia exopolimérica, corroyendo el metal por su actividad metabólica, por ejemplo bacterias reductoras de sulfato que generan H2S.</p><p>Medidas de control: muestrear y analizar la biopelícula y la química del agua, aplicar biocidas e inhibidores adecuados, y mantener un monitoreo permanente, ya que los cambios en el proceso pueden alterar la eficacia de los aditivos de mitigación.</p>",
+ {s:"D3029,D3055,D3062"});
+
+/* ============ PREVENCIÓN Y NORMAS ============ */
+mod('prevencion','Prevención y normas','Prevención integral y normas aplicables',
+ 'Casi todas las estrategias de control de la corrosión, sin importar la forma específica, se agrupan en cuatro grandes frentes: diseño, selección de materiales, recubrimientos y modificación del ambiente. Esta pestaña cierra con las normas más citadas en las diapositivas.',
+ '#2f9e44','#e9f9ee','#1e7a32');
+H("Los cuatro grandes frentes de prevención");
+TBL(["Frente","Ejemplos típicos"],
+[["Diseño","Evitar crevices, aumentar diámetros de tubería para bajar velocidad, diseñar para reemplazo fácil del ánodo, eliminar concentradores de esfuerzo, aislar metales distintos"],
+["Selección de materiales","Elegir aleaciones con potenciales similares (galvánica), alto PREN (picado), grados L o estabilizados (intergranular), titanio o alto níquel (crevice)"],
+["Recubrimientos","Pinturas y recubrimientos de baja permeabilidad, recubrimientos de zinc, cladding con acero inoxidable o níquel, revestimientos duros contra erosión"],
+["Modificación del ambiente","Reducir cloruros u oxígeno disuelto, controlar temperatura y pH, filtrar sólidos en suspensión, usar inhibidores y biocidas, controlar humedad relativa"]]);
+NOTE("La protección catódica aparece en casi todas las formas de corrosión como una herramienta poderosa, pero con una advertencia transversal: mal controlada, puede favorecer la fragilización por hidrógeno.","warn","Ojo");
+H("Normas más citadas por forma de corrosión");
+TBL(["Forma de corrosión","Normas de referencia"],
+[["Picado y grietas","ASTM G48, ASTM G78, ASTM G192, ASTM F746, ISO 18070, ISO 18089"],
+["Galvánica","ASTM G71, ASTM G116, ASTM G82"],
+["Intergranular (sensibilización)","ASTM A-262"],
+["Agrietamiento por corrosión bajo tensión (SCC)","ASTM G30, G36, G37, G38, G49, G58, G129, ISO 6957, ISO 7539, NACE TM0177"],
+["Corrosión filiforme","ASTM D 2803"],
+["Corrosión microbiológica (MIC)","NACE TM0212"]]);
+H("Ejercicios");
+MATCH("Relaciona cada medida de prevención con el frente general al que pertenece.",[
+ ["Aumentar el diámetro de una tubería para reducir la velocidad del flujo","Diseño"],
+ ["Elegir un acero inoxidable con mayor PREN","Selección de materiales"],
+ ["Aplicar dos capas de epoxi y dos de poliuretano","Recubrimientos"],
+ ["Reducir la concentración de cloruros en el proceso","Modificación del ambiente"]],
+ "El diseño ataca la geometría y el flujo; la selección de materiales ataca la composición de la aleación; los recubrimientos aíslan el metal del medio; y la modificación del ambiente cambia la agresividad química del entorno.",{s:"D1253,D1007,D2982"});
+SORT("Clasifica cada norma según la forma de corrosión a la que se asocia principalmente en la guía.",["Picado o grietas","SCC","Galvánica"],[
+ ["ASTM G48",0],
+ ["ASTM G30",1],
+ ["ASTM G71",2],
+ ["ISO 7539",1],
+ ["ASTM G78",0],
+ ["ASTM G82",2]],
+ "ASTM G48 y G78 se asocian a picado y grietas; ASTM G30 e ISO 7539 se asocian a SCC; ASTM G71 y G82 se asocian a corrosión galvánica.",{s:"D1073,D1987,D696"});
+MC("Una planta necesita reducir el riesgo de picado en un acero inoxidable que opera en agua con cloruros. Entre las siguientes, ¿cuál es la estrategia que ataca directamente la composición del material, y no el diseño ni el ambiente?",
+ ["Cambiar a un acero inoxidable con mayor contenido de cromo, molibdeno y nitrógeno, para subir su PREN","Aumentar el diámetro de la tubería para reducir la velocidad del fluido","Filtrar el agua para retirar sólidos en suspensión antes de que entre al sistema","Reducir la concentración de cloruros mediante un tratamiento previo del agua"],
+ "Subir el PREN mediante una aleación con más cromo, molibdeno y nitrógeno es una estrategia de selección de materiales. Aumentar el diámetro es diseño; filtrar sólidos y reducir cloruros son modificaciones del ambiente.",{s:"D1013,D950"});
+VF("La norma ASTM A-262 se utiliza específicamente para evaluar la susceptibilidad a la corrosión intergranular por sensibilización en aceros inoxidables.",true,
+ "Verdadero. ASTM A-262 es la norma citada en la guía específicamente para la evaluación de la corrosión intergranular en aceros inoxidables.",{s:"D1393"});
+FILL("Completa el texto con las palabras del recuadro.","Las cuatro grandes estrategias de prevención de la corrosión son el {diseño}, la selección de {materiales}, los {recubrimientos} y la modificación del {ambiente}.",["diseño","materiales","recubrimientos","ambiente","presupuesto"],
+ "Prácticamente toda estrategia de control de corrosión se puede agrupar en diseño, selección de materiales, recubrimientos y modificación del ambiente.",{s0:"D3078"});
+OPEN("Una empresa de ingeniería debe diseñar una línea de proceso nueva que manejará agua salobre con sólidos en suspensión. Propone una estrategia de prevención de la corrosión que combine al menos tres de los cuatro grandes frentes vistos en esta guía, con un ejemplo concreto para cada uno.",
+ ["Propone al menos tres frentes distintos: diseño, materiales, recubrimientos o ambiente","Da un ejemplo concreto y coherente para cada frente propuesto","Explica brevemente por qué combinar varios frentes reduce el riesgo mejor que depender de uno solo"],
+ "<p>Una propuesta sólida combina varios frentes: en <b>diseño</b>, usar diámetros generosos y codos aerodinámicos para evitar turbulencia; en <b>materiales</b>, elegir una aleación con buen PREN si hay cloruro, o resistente a la erosión si hay sólidos en suspensión; en <b>recubrimientos</b>, aplicar un revestimiento interno de baja permeabilidad o resistente a la abrasión; y en <b>ambiente</b>, filtrar los sólidos en suspensión antes de que entren al sistema y dosificar inhibidores si es necesario.</p><p>Combinar varios frentes reduce el riesgo porque cada forma de corrosión (erosión, picado, grietas) responde mejor a un tipo distinto de control; depender de uno solo deja descubiertos los demás mecanismos.</p>",
+ {s:"D3078"});
+
+/* ============ CASOS CON IA ============ */
+mod('casos','Casos con IA','Casos de aplicación generados con IA',
+ 'Estos casos están redactados en el estilo típico de un ejercicio de examen generado con inteligencia artificial: una situación realista, con datos concretos, y preguntas que exigen identificar la forma de corrosión y justificar la respuesta con el mecanismo correcto. Son muy parecidos a lo que podría aparecer si el profesor usó IA para preparar el examen.',
+ '#f08c00','#fff4e0','#9c5700');
+
+H("Caso 1. Tanque de almacenamiento de diésel");
+P("Un tanque cilíndrico de acero al carbono, sin recubrimiento interno, almacena diésel con un poco de agua decantada en el fondo. Tras cinco años, una inspección por ultrasonido muestra una pérdida de espesor de aproximadamente 0.3 mm por año, repartida de forma pareja en toda la placa de fondo, sin picaduras ni grietas visibles.");
+MC("¿Qué forma de corrosión describe mejor el patrón de daño encontrado en el fondo del tanque?",
+ ["Corrosión uniforme, por el ataque parejo repartido en toda la placa de fondo","Corrosión por picado, por la pequeña cantidad de agua decantada en el fondo","Corrosión por grietas, por el contacto entre la placa y el agua estancada","Agrietamiento por corrosión bajo tensión, por el peso del diésel almacenado"],
+ "Una pérdida de espesor medida y repartida de forma pareja en toda la superficie, sin picaduras ni grietas, es la firma de la corrosión uniforme, no de una forma localizada como el picado o las grietas.",{s:"D4"});
+VF("Como la pérdida de espesor es uniforme y medible, el propietario puede planificar con confianza una tolerancia a la corrosión en el próximo rediseño del tanque.",true,
+ "Verdadero. La corrosión uniforme se mide y predice con relativa facilidad, lo que permite planificar una tolerancia a la corrosión en el diseño con bastante confianza.",{s:"D5"});
+MC("¿Cuál de las siguientes sería la medida de control más directa y económica para este caso?",
+ ["Aplicar un recubrimiento interno de fondo o especificar una tolerancia a la corrosión","Instalar ánodos de titanio platinizado sin ningún tipo de recubrimiento","Cambiar todo el tanque a una aleación de titanio puro","Aumentar la velocidad de llenado y vaciado del tanque"],
+ "Frente a una corrosión uniforme bien caracterizada, un recubrimiento de fondo o una tolerancia a la corrosión en el diseño son medidas directas y económicas; cambiar a titanio puro es desproporcionado para este caso.",{s:"D5"});
+
+H("Caso 2. Escalera de aluminio con remaches de acero en un muelle");
+P("Una escalera de acceso hecha en aluminio, fijada con remaches de acero inoxidable, se instala en un muelle marino. A los dos años, los remaches se ven en buen estado, pero el aluminio alrededor de cada remache muestra picaduras profundas y pérdida de material, mucho más marcada que en el resto de la estructura.");
+MC("¿Cuál es la explicación más probable del deterioro acelerado del aluminio justo alrededor de los remaches?",
+ ["Corrosión galvánica: el aluminio, menos noble, se vuelve ánodo frente al acero inoxidable","Corrosión filiforme, por humedad relativa baja en el ambiente marino","Fatiga por corrosión, por la vibración de las olas sobre la escalera","Dezincificación, por la presencia de zinc en los remaches de acero inoxidable"],
+ "El aluminio es menos noble que el acero inoxidable; al quedar acoplados eléctricamente en un electrolito marino, el aluminio se vuelve ánodo y se corroe de forma acelerada justo en el área de contacto con los remaches.",{s:"D188,D206"});
+VF("El pequeño tamaño del remache de acero inoxidable frente a la gran superficie de aluminio agrava el daño, porque la relación de área cátodo pequeño/ánodo grande es la más desfavorable.",false,
+ "Falso. La relación más desfavorable es la contraria: ánodo pequeño frente a cátodo grande. Aquí el ánodo (aluminio) es la superficie grande y el cátodo (acero inoxidable) es pequeño, lo cual de hecho es menos agresivo que si fuera al revés, aunque el daño local sigue siendo real.",{s:"D562"});
+OPEN("Propone dos medidas de prevención concretas para una segunda escalera que se va a instalar en el mismo muelle.",
+ ["Propone aislamiento eléctrico entre el aluminio y los remaches, por ejemplo con arandelas o recubrimientos dieléctricos","Propone un recubrimiento protector que separe físicamente los dos metales del electrolito","Menciona la opción de elegir remaches de un metal con potencial más cercano al del aluminio"],
+ "<p>Dos medidas razonables: aislar eléctricamente el aluminio de los remaches con arandelas o recubrimientos dieléctricos, o aplicar un recubrimiento protector que evite que el electrolito marino llegue al contacto entre los dos metales. También se podría elegir un sujetador de un metal con potencial más cercano al del aluminio.</p>",
+ {s:"D681"});
+
+H("Caso 3. Brida con empaque de fibra en una plataforma costa afuera");
+P("Una unión embridada de acero inoxidable 304, sellada con un empaque de fibra absorbente, lleva dos años expuesta a salpicadura de agua de mar. Al desmontarla para mantenimiento, se encuentra un ataque profundo justo en el área de contacto entre la cara de la brida y el empaque, mientras el resto de la brida está intacto.");
+MC("¿Qué tipo de corrosión explica mejor el patrón de ataque encontrado exactamente bajo el empaque?",
+ ["Corrosión por grietas, favorecida por la solución estancada bajo el empaque absorbente","Corrosión uniforme, por la exposición continua a la salpicadura marina","Corrosión galvánica, por el contacto entre el acero inoxidable y la fibra del empaque","Fatiga por corrosión, por la vibración normal de una plataforma costa afuera"],
+ "El empaque absorbente retiene una solución estancada justo en el área de contacto, creando el microambiente pobre en oxígeno y rico en cloruro que caracteriza a la corrosión por grietas; el resto de la brida, expuesto al ambiente abierto, permanece protegido catódicamente.",{s:"D79,D900"});
+VF("Si se hubiera usado un empaque no absorbente, como teflón, en vez de uno de fibra, el riesgo de este tipo de ataque se habría reducido de forma importante.",true,
+ "Verdadero. Usar empaques no absorbentes, como teflón, es una de las medidas recomendadas precisamente para minimizar la corrosión por grietas en uniones embridadas.",{s:"D900"});
+MC("Los aceros inoxidables, como familia de materiales, ¿cómo se comportan frente a la corrosión por grietas en comparación con el titanio y las aleaciones de alto níquel?",
+ ["Son mucho más susceptibles a la corrosión por grietas que el titanio y el alto níquel","Son mucho más resistentes a la corrosión por grietas que el titanio y el alto níquel","Tienen exactamente la misma resistencia a grietas que el titanio en cualquier condición","No sufren corrosión por grietas bajo ninguna circunstancia conocida"],
+ "La guía señala que los aceros inoxidables como familia son muy pobres resistiendo la corrosión por grietas, mientras que el titanio y las aleaciones de alto níquel, con transición activa-pasiva estrecha, ofrecen la máxima resistencia.",{s:"D902,D909"});
+
+H("Caso 4. Tubos de intercambiador de calor en agua de mar");
+P("Un intercambiador de calor con tubos de acero inoxidable 304 enfría agua de mar. A los 18 meses, varios tubos presentan pequeñas cavidades profundas, de boca estrecha, concentradas en zonas de bajo flujo, mientras el espesor general de los tubos se mantiene casi intacto.");
+MC("¿Cuál es el diagnóstico más probable para este patrón de daño?",
+ ["Corrosión por picado, favorecida por el cloruro del agua de mar y el bajo flujo local","Corrosión uniforme, por el contacto prolongado con agua de mar fría","Corrosión intergranular, por sensibilización durante la fabricación de los tubos","Corrosión filiforme, por humedad atrapada bajo un recubrimiento de los tubos"],
+ "Las cavidades pequeñas y profundas, con mínima pérdida general de espesor y concentradas en zonas de bajo flujo (condición estancada), junto con el cloruro del agua de mar, son el patrón típico del picado, no de las otras formas mencionadas.",{s:"D301,D933"});
+VF("Cambiar los tubos a acero inoxidable tipo 316 reduciría el riesgo de picado frente al tipo 304, principalmente por el molibdeno adicional en su composición.",true,
+ "Verdadero. El tipo 316 resiste mejor el picado que el 304 gracias a la adición de alrededor de 2 % de molibdeno; por eso el 316 se recomienda en aplicaciones con agua de mar y el 304 se considera inadecuado.",{s:"D952"});
+MC("Si la empresa quiere comparar de forma numérica la resistencia al picado de distintas aleaciones candidatas, ¿qué parámetro debería calcular?",
+ ["El PREN, usando el contenido de cromo, molibdeno, tungsteno y nitrógeno de cada aleación","La dureza Rockwell C de cada aleación candidata","El punto de fusión de cada aleación candidata","El coeficiente de expansión térmica de cada aleación candidata"],
+ "El PREN (Pitting Resistance Equivalent Number) se calcula a partir de Cr, Mo, W y N, y permite comparar numéricamente la resistencia relativa al picado de distintos aceros inoxidables y aleaciones dúplex.",{s:"D1013"});
+
+H("Caso 5. Impulsor de bomba de lodos en una planta minera");
+P("El impulsor de una bomba centrífuga que transporta lodo con partículas abrasivas presenta, a los diez meses de operación, surcos profundos que siguen claramente la dirección del flujo, además de zonas con picaduras en forma de herradura cerca de la succión.");
+MC("¿Qué combinación de mecanismos explica mejor el daño observado en el impulsor?",
+ ["Corrosión por erosión, agravada por impacto (impingement) cerca de la succión","Corrosión por grietas, agravada por fatiga por corrosión en toda la superficie","Dezincificación, agravada por corrosión filiforme bajo el recubrimiento del impulsor","Corrosión intergranular, agravada por fragilización por hidrógeno en el eje"],
+ "Los surcos que siguen la dirección del flujo son típicos de la corrosión por erosión, mientras que las picaduras en forma de herradura cerca de la succión son la firma característica del impacto (impingement) por remolinos turbulentos.",{s:"D1159,D1203"});
+VF("Usar un hierro con alto contenido de silicio en el impulsor es una mejora reconocida frente a la corrosión por erosión en líneas que transportan lodo abrasivo.",true,
+ "Verdadero. El hierro con alto contenido de silicio es una mejora sobre los hierros fundidos convencionales y se usa ampliamente en condiciones severas de erosión corrosión, como en tuberías que transportan lodo.",{s:"D1216"});
+OPEN("Explica por qué una alta dureza del material del impulsor no garantiza, por sí sola, una buena resistencia a este tipo de daño, y propone una medida adicional de diseño.",
+ ["Explica que la dureza alta no garantiza resistencia a la erosión corrosión, porque el fenómeno combina ataque químico y abrasión mecánica","Propone una medida de diseño: aumentar el diámetro de paso, usar codos aerodinámicos, o revestimientos resistentes reemplazables"],
+ "<p>La guía advierte explícitamente que una alta dureza no garantiza por sí sola una buena resistencia a la erosión corrosión, porque el daño combina el ataque químico con la abrasión mecánica del flujo con partículas; un material duro pero con película protectora débil puede seguir fallando.</p><p>Una medida de diseño adicional: usar revestimientos duros reemplazables en las zonas de mayor desgaste, o rediseñar la geometría de succión para reducir la turbulencia y el impacto directo de partículas.</p>",
+ {s:"D167,D1230"});
+
+H("Caso 6. Cavitación en la succión de una bomba de agua ultrapura");
+P("Una bomba centrífuga que mueve agua ultrapura casi a la temperatura de ebullición, operando cerca de su NPSH requerido, desarrolla en pocos meses picaduras muy irregulares y profundas en el impulsor y en la voluta, con un ruido característico durante la operación.");
+MC("¿Qué fenómeno explica mejor el daño descrito, considerando la cercanía al NPSH requerido y el ruido característico?",
+ ["Cavitación, por el colapso de burbujas de vapor al caer la presión por debajo de la presión de vapor","Corrosión filiforme, por humedad atrapada bajo un recubrimiento interno de la bomba","Corrosión por grietas, por el ajuste entre el impulsor y el eje de la bomba","Dezincificación, por la pérdida selectiva de zinc en el material del impulsor"],
+ "Operar cerca del NPSH requerido hace que la presión local caiga por debajo de la presión de vapor del agua, formando burbujas que colapsan generando pulsos de presión muy altos: es la firma clásica de la cavitación, que también explica el ruido característico.",{s:"D1161,D1164"});
+VF("El agua ultrapura, por ser muy limpia, prácticamente elimina el riesgo de cavitación en bombas centrífugas.",false,
+ "Falso. La guía señala explícitamente que esta forma de corrosión ataca volutas e impulsores de bombas centrífugas que manejan agua ultrapura como fluido; la pureza del agua no evita la caída de presión por debajo de la presión de vapor.",{s:"D74"});
+MC("¿Cuál de las siguientes medidas de diseño ayuda de forma directa a reducir el riesgo de cavitación en esta bomba?",
+ ["Operar con un margen mayor sobre el NPSH requerido para evitar la caída de presión","Aumentar deliberadamente la rugosidad interna de la voluta y el impulsor","Reducir el diámetro de la tubería de succión para aumentar la velocidad","Elegir un material con menor resistencia mecánica para el impulsor"],
+ "Aumentar el margen sobre el NPSH requerido evita que la presión local caiga por debajo de la presión de vapor, lo que ataca la causa raíz de la cavitación; las otras opciones agravan el problema o son irrelevantes.",{s:"D70"});
+
+H("Caso 7. Pernos de una torre de aerogenerador");
+P("Los pernos que fijan las secciones de una torre de aerogenerador, sometidos a vibración constante del viento y del rotor, muestran después de tres años un polvo fino rojizo entre la cabeza del perno y la placa de apoyo, junto con pequeñas picaduras bajo esa zona, aunque las piezas nunca se movieron de forma visible entre sí.");
+MC("¿Qué fenómeno describe mejor el daño encontrado entre la cabeza del perno y la placa de apoyo?",
+ ["Fretting, causado por microdeslizamientos cíclicos de muy baja amplitud debido a la vibración","Cavitación, causada por el colapso de burbujas de vapor en la zona de apoyo","Corrosión filiforme, causada por un defecto en la pintura de la placa de apoyo","Grafitización, causada por la disolución preferencial del hierro en la placa"],
+ "El polvo fino de óxido junto con picaduras en una zona de apoyo que parece inmóvil, bajo vibración constante, es la firma clásica del fretting: microdeslizamientos de amplitud mínima entre superficies en contacto a presión.",{s:"D1267,D1324"});
+VF("El fretting es particularmente peligroso porque puede actuar como iniciador de grietas de fatiga, adelantando una fractura catastrófica frente a lo previsto en el diseño.",true,
+ "Verdadero. La guía advierte específicamente que el fretting, a diferencia del desgaste por deslizamiento común, actúa como iniciador de grietas de fatiga, lo que puede llevar a una fractura catastrófica mucho antes de lo previsto.",{s:"D1325"});
+OPEN("Propone dos medidas de prevención específicas para este tipo de uniones atornilladas sometidas a vibración constante.",
+ ["Propone reducir la concentración de esfuerzos en la zona de apoyo o ajustar el par de apriete para eliminar el microdeslizamiento","Propone el uso de lubricantes o tratamientos superficiales adecuados en la interfaz de contacto"],
+ "<p>Dos medidas razonables: ajustar correctamente el par de apriete y la geometría de la unión para eliminar el microdeslizamiento por diseño, o, cuando el deslizamiento es inevitable, aplicar lubricantes que dificulten el acceso del oxígeno y reduzcan el coeficiente de fricción, junto con tratamientos superficiales adecuados.</p>",
+ {s:"D1331,D1338"});
+
+H("Caso 8. Tanque soldado de acero inoxidable 304 para ácido nítrico diluido");
+P("Un tanque de acero inoxidable 304, fabricado con soldadura multipasada y sin tratamiento térmico posterior, almacena ácido nítrico diluido. A los dos años, se detecta un ataque localizado justo en una banda estrecha paralela al cordón de soldadura, mientras el metal base y el propio cordón permanecen casi intactos.");
+MC("¿Qué fenómeno explica mejor el ataque localizado en esa banda estrecha junto al cordón de soldadura?",
+ ["Corrosión intergranular por sensibilización, con posible knife-line attack en la zona afectada por el calor","Corrosión por picado, iniciada por una inclusión no metálica cerca del cordón","Corrosión galvánica, por el contacto entre el cordón de soldadura y el metal base","Cavitación, generada por el proceso de soldadura multipasada"],
+ "El calor de una soldadura multipasada sin tratamiento posterior puede sensibilizar el acero inoxidable austenítico, precipitando carburos de cromo en los límites de grano de la zona afectada por el calor; cuando el ataque se concentra en una banda estrecha junto al cordón, se habla de knife-line attack.",{s:"D1357,D1365"});
+VF("Si el tanque se hubiera fabricado con un grado 304L en vez de 304 estándar, el riesgo de sensibilización durante la soldadura habría sido menor.",true,
+ "Verdadero. Los grados L, como el 304L, tienen menos de 0.03 % de carbono, frente al 0.06-0.15 % del grado estándar, lo que reduce la formación de carburos de cromo en los límites de grano durante el calentamiento de la soldadura.",{s:"D1370"});
+MC("Entre las siguientes, ¿cuál es una medida correctiva reconocida para el knife-line attack una vez que ya ocurrió?",
+ ["Recalentar el metal soldado para permitir la difusión y disolver los carburos formados","Aumentar la velocidad de enfriamiento de la soldadura para fijar los carburos","Aplicar protección catódica únicamente sobre la zona del cordón de soldadura","Reducir el espesor de la placa en la zona afectada por el calor"],
+ "La guía indica que el problema del knife-line attack se corrige recalentando el metal soldado, lo que permite que el carbono y el cromo se redistribuyan por difusión y se eliminen los carburos localizados que causaron el empobrecimiento de cromo.",{s:"D1371"});
+
+H("Caso 9. Válvula de latón en una red de agua potable");
+P("Una válvula de latón amarillo instalada en una red de agua potable, tras ocho años de servicio, se rompe al aplicar un esfuerzo moderado durante una maniobra de mantenimiento. Al examinar la fractura, se observa un color rojizo cobrizo en el interior y una estructura visiblemente porosa, muy distinta del latón amarillo original.");
+MC("¿Qué fenómeno explica mejor el cambio de color y la pérdida de resistencia mecánica de la válvula?",
+ ["Dezincificación: el zinc se disolvió preferencialmente, dejando una matriz porosa de cobre","Grafitización: el hierro se disolvió preferencialmente, dejando un esqueleto de grafito","Corrosión por picado: el agua potable formó cavidades profundas en el latón","Fatiga por corrosión: los ciclos de presión del agua potable fracturaron el latón"],
+ "El color rojizo cobrizo y la estructura porosa son la firma característica de la dezincificación: el zinc, menos noble que el cobre, se disuelve preferencialmente dejando una matriz de cobre débil y porosa que puede fracturarse con un esfuerzo relativamente bajo.",{s:"D1415,D1424"});
+VF("Fabricar la próxima válvula en latón rojo, con una proporción de zinc mucho menor (85-15 % Zn), reduciría el riesgo de este tipo de daño frente al latón amarillo.",true,
+ "Verdadero. El latón rojo, con 85-15 % de zinc, ofrece mejor resistencia a la dezincificación que el latón amarillo; también ayuda alear con inhibidores como estaño, arsénico o fósforo.",{s:"D1409,D1411"});
+OPEN("Explica por qué, pese a conservar aparentemente su forma, la pieza perdió tanta resistencia mecánica, relacionándolo con el mecanismo de dealloying.",
+ ["Explica que el dealloying remueve selectivamente un elemento (en este caso el zinc), dejando una matriz más pobre en ese elemento","Señala que la pieza conserva su forma externa porque solo se pierde el elemento disuelto, no toda la masa, pero la estructura queda porosa y mecánicamente débil"],
+ "<p>En el dealloying o lixiviación selectiva, solo se disuelve preferencialmente un elemento de la aleación (aquí, el zinc), mientras el otro (el cobre) permanece como una matriz porosa. La pieza puede conservar su forma y dimensiones externas casi intactas, pero esa matriz porosa es mucho más débil mecánicamente que el latón original, lo que explica por qué se fracturó con un esfuerzo moderado.</p>",
+ {s:"D1398,D1424"});
+
+H("Caso 10. Boquilla soldada de un tanque de hidróxido de sodio");
+P("Un tanque de acero al carbono que almacena una solución cáustica concentrada presenta, cerca de una boquilla soldada, grietas finas que penetran el material con apariencia frágil, mientras el resto del tanque permanece prácticamente sin ataque visible y sin pérdida apreciable de espesor.");
+MC("¿Qué combinación de factores explica mejor este agrietamiento localizado junto a la boquilla soldada?",
+ ["Un esfuerzo residual de la soldadura combinado con el ambiente cáustico, propio del SCC en acero al carbono","Una pérdida uniforme de espesor combinada con picado generalizado en toda la placa","Una reacción galvánica entre el acero al carbono y el hidróxido de sodio disuelto","Una cavitación local causada por el flujo de llenado del tanque"],
+ "El acero al carbono en soluciones cáusticas es una combinación clásica para el SCC; el esfuerzo residual de la soldadura, concentrado junto a la boquilla, aporta el componente de tensión necesario para iniciar y propagar las grietas frágiles observadas.",{s:"D1458,D1876"});
+VF("Aplicar un tratamiento de alivio de esfuerzos después de soldar la boquilla es una medida reconocida para reducir el riesgo de este tipo de agrietamiento.",true,
+ "Verdadero. Eliminar o reducir el esfuerzo de tensión residual, por ejemplo con un tratamiento térmico de alivio de esfuerzos después de soldar, es una de las estrategias de prevención más efectivas contra el SCC.",{s:"D1877"});
+MC("Si la planta decide aplicar protección catódica a este tanque como medida adicional, ¿qué precaución debe tenerse en cuenta según la guía?",
+ ["Controlar bien el proceso, porque una protección catódica mal aplicada puede favorecer la fragilización por hidrógeno","Ninguna, porque la protección catódica no tiene ningún efecto secundario conocido","Debe evitarse por completo, porque siempre empeora cualquier forma de SCC","Solo debe aplicarse si el tanque ya presenta picado, nunca junto a soldaduras"],
+ "La guía advierte que, aunque la protección catódica es efectiva contra el SCC, debe aplicarse con precaución porque un control deficiente puede introducir hidrógeno atómico en el metal y favorecer la fragilización por hidrógeno.",{s:"D1884,D1885"});
+
+H("Caso 11. Riser flexible costa afuera con carga cíclica de oleaje");
+P("Un riser de acero que conecta una plataforma con el lecho marino está sometido a ciclos continuos de flexión por el oleaje, además de estar expuesto al agua de mar. Tras varios años, una inspección detecta múltiples grietas paralelas, transgranulares y sin ramificación, concentradas en una zona de curvatura cercana a una unión soldada.");
+MC("¿Qué fenómeno describe mejor este patrón de múltiples grietas paralelas, transgranulares y sin ramificación, en una zona de esfuerzo cíclico constante?",
+ ["Fatiga por corrosión, por la combinación de esfuerzo cíclico y ambiente marino corrosivo","Agrietamiento por corrosión bajo tensión (SCC), por su patrón ramificado tipo rayo","Corrosión por grietas, por la solución estancada bajo una brida cercana","Dezincificación, por la disolución preferencial de un elemento de aleación"],
+ "Las grietas transgranulares, múltiples, paralelas y sin ramificación, en una zona de esfuerzo cíclico constante como la curvatura de un riser bajo oleaje, corresponden al patrón característico de la fatiga por corrosión, distinto del patrón ramificado tipo rayo del SCC.",{s:"D1897,D1964"});
+VF("A diferencia de la fatiga mecánica pura, en la fatiga por corrosión no existe un verdadero límite de esfuerzo por debajo del cual el material tenga vida infinita.",true,
+ "Verdadero. En un ambiente corrosivo, el nivel de esfuerzo que podría considerarse de vida infinita se reduce o se elimina por completo, a diferencia de la fatiga puramente mecánica, que sí presenta un límite de fatiga definido.",{s:"D101,D102"});
+OPEN("Propone dos técnicas de inspección adecuadas para monitorear este riser y una medida de mitigación basada en el tratamiento térmico posterior a la soldadura.",
+ ["Propone pruebas ultrasónicas y de partículas magnéticas como técnicas de inspección adecuadas para fatiga por corrosión","Explica que un tratamiento térmico posterior a la soldadura reduce los esfuerzos residuales que agravan la fatiga por corrosión en la zona soldada"],
+ "<p>Las pruebas ultrasónicas y de partículas magnéticas son dos de los métodos más comunes para inspeccionar fatiga por corrosión, especialmente útiles para localizar grietas finas en zonas de esfuerzo cíclico.</p><p>Como mitigación, un tratamiento térmico posterior a la soldadura reduce los esfuerzos residuales introducidos durante el proceso, lo que disminuye la contribución del componente de esfuerzo a la fatiga por corrosión en la zona cercana a la unión soldada.</p>",
+ {s:"D1969,D1979"});
+
+H("Caso 12. Perno de alta resistencia tras un electrodepositado de cadmio");
+P("Un perno de acero de alta resistencia, recién electrodepositado con cadmio para protegerlo de la corrosión atmosférica, se instala bajo carga de tensión en una estructura. Pocas semanas después, falla de forma frágil y repentina a un esfuerzo muy por debajo de su esfuerzo de cedencia nominal, sin que se observe ataque corrosivo visible en la superficie.");
+MC("¿Cuál es la causa más probable de esta falla frágil y repentina, considerando el proceso de fabricación reciente del perno?",
+ ["Fragilización por hidrógeno, introducido durante el proceso de electrodepositado","Corrosión uniforme, por exposición prolongada a la atmósfera antes de instalarse","Corrosión por picado, iniciada por una inclusión no metálica en el acero","Dezincificación, por la pérdida de zinc durante el proceso de electrodepositado"],
+ "El electrodepositado es una fuente reconocida de hidrógeno atómico; en aceros de alta resistencia, ese hidrógeno puede causar fragilización y una fractura frágil a esfuerzos muy por debajo del esfuerzo de cedencia, sin evidencia de ataque corrosivo visible, justo el patrón descrito.",{s:"D222,D227"});
+VF("Un tratamiento de horneado (baking) entre 100 y 150 °C poco después del electrodepositado podría haber reducido el riesgo de esta falla, al remover el hidrógeno disuelto.",true,
+ "Verdadero. La absorción de hidrógeno en metales es reversible, y el horneado a 100-150 °C es una medida reconocida para remover el hidrógeno disuelto en el acero después de procesos como el electrodepositado.",{s:"D2847,D2855"});
+MC("¿Por qué los aceros de alta resistencia son particularmente vulnerables a este tipo de falla, en comparación con aceros de baja resistencia?",
+ ["Porque la fragilización por hidrógeno afecta con mayor severidad a los materiales de alta resistencia, como aceros de alta resistencia, titanio y aluminio","Porque los aceros de alta resistencia siempre contienen más zinc en su composición química","Porque los aceros de alta resistencia son inmunes a la corrosión uniforme y solo fallan por hidrógeno","Porque los aceros de alta resistencia nunca pueden recibir ningún tipo de recubrimiento electrolítico"],
+ "La guía señala explícitamente que la fragilización por hidrógeno no afecta a todos los metales por igual, siendo los aceros de alta resistencia, las aleaciones de titanio y las aleaciones de aluminio los materiales más vulnerables a este tipo de daño.",{s:"D220"});
+
+H("Caso 13. Tramo de tubería tras una prueba hidráulica con agua de río");
+P("Un tramo de tubería de acero al carbono se somete a una prueba hidráulica con agua de río para verificar su integridad tras una reparación. Por un drenaje incompleto, queda un residuo de agua en el fondo del tramo durante varias semanas antes de ponerlo en servicio. Meses después, se detecta picado localizado acompañado de una capa viscosa (biopelícula) justo en la zona donde quedó el residuo.");
+MC("¿Qué mecanismo explica mejor el picado localizado asociado a la biopelícula encontrada en esa zona?",
+ ["Corrosión microbiológicamente influenciada (MIC), favorecida por el agua residual no drenada","Corrosión filiforme, favorecida por un defecto en el recubrimiento interno de la tubería","Corrosión por erosión, favorecida por la alta velocidad del agua durante la prueba","Grafitización, favorecida por el contenido de carbono del acero al carbono"],
+ "El agua residual no drenada después de la prueba hidráulica es justo la condición mencionada en la guía como origen frecuente de MIC: permite que los microorganismos formen una biopelícula adherida y corroan el metal por su actividad metabólica.",{s:"D3029,D3030"});
+VF("Para confirmar si la causa del picado fue MIC, sería razonable analizar la química del agua y buscar evidencia de bacterias reductoras de sulfato mediante métodos como qPCR.",true,
+ "Verdadero. El análisis de la química del agua y los métodos moleculares como qPCR, mencionados en la guía, son herramientas reconocidas para identificar MIC y confirmar la presencia de agentes metabólicos como las bacterias reductoras de sulfato.",{s:"D3036,D3050"});
+OPEN("Propone un procedimiento de puesta en servicio, para futuras pruebas hidráulicas, que reduzca el riesgo de este tipo de daño.",
+ ["Propone un drenaje completo y verificado tras cada prueba hidráulica, sin dejar agua residual","Sugiere limpieza o uso de biocidas si el drenaje completo no es posible de inmediato","Menciona la conveniencia de minimizar el tiempo entre la prueba y la puesta en servicio definitiva"],
+ "<p>La medida más directa es garantizar un drenaje completo y verificado del agua de prueba, evitando dejar residuos durante periodos prolongados, que es justamente la condición que favorece la formación de biopelículas y la MIC según la guía.</p><p>Cuando el drenaje completo no sea posible de inmediato, se puede recurrir a limpieza o biocidas, y en general reducir el tiempo entre la prueba hidráulica y la puesta en servicio definitiva, para minimizar la ventana de tiempo en la que el agua estancada puede sostener actividad microbiana.</p>",
+ {s:"D3030,D3034"});
+
+/* ============ SIMULACRO ============ */
+mod('simulacro','Simulacro','Simulacro de examen',
+ 'Más de cincuenta preguntas de distintos tipos (selección múltiple, falso o verdadero, completar, emparejar, ordenar, clasificar y respuesta abierta) que mezclan los nueve temas de la guía, con énfasis en casos de aplicación. Responde, comprueba y lee la explicación de cada una antes de pasar a la siguiente.',
+ '#3b5bdb','#e8ecfd','#2b44a8');
+
+H("Bloque 1. Fundamentos y corrosión uniforme");
+MC("¿Cuál de las siguientes afirmaciones describe mejor la reacción catódica típica en un medio neutro aireado?",
+ ["O<sub>2</sub> + 2H<sub>2</sub>O + 4e<sup>-</sup> → 4OH<sup>-</sup>, reducción del oxígeno disuelto","M → M<sup>n+</sup> + ne<sup>-</sup>, oxidación del metal base expuesto","Fe<sup>2+</sup> + 2OH<sup>-</sup> → Fe(OH)<sub>2</sub>, precipitación directa de herrumbre","Cr<sub>23</sub>C<sub>6</sub> → 23Cr + 6C, descomposición de un carburo de cromo"],
+ "En medio neutro aireado, la reacción catódica típica es la reducción del oxígeno disuelto, produciendo iones hidroxilo. La oxidación del metal ocurre en el ánodo, no en el cátodo.",{s:"D634"});
+VF("La corrosión uniforme es, en términos de tonelaje total de metal perdido en el mundo, la forma de corrosión más importante.",true,
+ "Verdadero. Aunque sus fallas catastróficas son relativamente raras, la corrosión uniforme es la que más tonelaje de metal consume globalmente.",{s:"D4"});
+MC("Un tanque de almacenamiento sin recubrimiento pierde espesor de forma pareja en toda su superficie sumergida, a una velocidad medible y constante cada año. ¿Qué estrategia de control es la más coherente con este diagnóstico?",
+ ["Especificar una tolerancia a la corrosión en el espesor de diseño del próximo tanque","Instalar de inmediato un parche soldado en cada zona con pérdida de espesor","Cambiar el tanque completo a una aleación de titanio puro sin evaluar costos","Ignorar el hallazgo, porque la corrosión uniforme nunca compromete un tanque"],
+ "Frente a una corrosión uniforme medible y predecible, especificar una tolerancia a la corrosión en el diseño es la estrategia estándar y más coherente; cambiar a titanio puro sin evaluación de costos es desproporcionado.",{s:"D5"});
+
+H("Bloque 2. Corrosión galvánica");
+MC("En un acople galvánico entre dos metales distintos, ¿qué metal se corroe de forma acelerada respecto a si estuviera solo?",
+ ["El metal menos noble, que se convierte en el ánodo de la celda","El metal más noble, que se convierte en el ánodo de la celda","Ambos metales se corroen exactamente igual que si estuvieran separados","Ninguno de los dos, porque el acople siempre detiene la corrosión total"],
+ "El metal menos noble se vuelve el ánodo de la celda galvánica y acelera su corrosión; el metal más noble se vuelve cátodo y su corrosión se frena o se detiene.",{s:"D192,D206"});
+VF("Una relación de área pequeña entre ánodo y cátodo (ánodo pequeño frente a cátodo grande) es una de las condiciones más desfavorables en corrosión galvánica.",true,
+ "Verdadero. Cuando el ánodo es pequeño frente a un cátodo grande, la corriente galvánica se concentra en poca superficie, acelerando la pérdida de espesor justo ahí.",{s:"D210"});
+MC("Una escalera de aluminio fijada con remaches de acero inoxidable en un ambiente marino muestra picaduras profundas de aluminio justo alrededor de cada remache. ¿Qué explica mejor este patrón?",
+ ["El aluminio, menos noble que el acero inoxidable, actúa como ánodo del acople galvánico","El acero inoxidable, más noble, se corroe de forma acelerada por el acople","Una corrosión filiforme bajo una capa de pintura dañada en el aluminio","Una fatiga por corrosión causada por la vibración normal de la escalera"],
+ "El aluminio es menos noble que el acero inoxidable; al quedar acoplados en un electrolito marino, el aluminio se vuelve ánodo y se corroe de forma acelerada justo donde hace contacto con los remaches.",{s:"D188,D206"});
+FILL("Completa el texto con las palabras del recuadro.","En la corrosión galvánica, el metal menos {noble} se vuelve {ánodo} y se corroe más rápido; el metal más noble se vuelve {cátodo} y su corrosión se {frena}.",["noble","ánodo","cátodo","frena","acelera"],
+ "El metal menos noble se vuelve ánodo y acelera su corrosión; el más noble se vuelve cátodo y su corrosión se frena o se detiene.",{s0:"D192,D206"});
+
+H("Bloque 3. Corrosión por grietas y picado");
+MC("¿Cuál de las siguientes condiciones favorece con mayor probabilidad la corrosión por grietas en una unión embridada?",
+ ["Un empaque absorbente que retiene solución estancada entre las caras de la brida","Una junta soldada a tope sin ningún tipo de espacio confinado","Un flujo turbulento y de alta velocidad sobre toda la superficie de la brida","Una superficie pulida y completamente libre de depósitos"],
+ "Un empaque absorbente retiene solución estancada en el espacio confinado entre las caras de la brida, creando el microambiente pobre en oxígeno y rico en cloruro que inicia la corrosión por grietas.",{s:"D79,D900"});
+VF("Dentro de una grieta o un picado activo, el pH interior suele ser más bajo (más ácido) que el pH del entorno exterior.",true,
+ "Verdadero. Dentro de la cavidad el pH puede caer hasta valores de 1 a 3, mientras el entorno exterior se mantiene cerca de la neutralidad, entre 6 y 7.",{s:"D986"});
+MC("Un tubo de acero inoxidable 304 en agua de mar presenta cavidades pequeñas y profundas concentradas en zonas de bajo flujo, con mínima pérdida general de espesor. ¿Qué forma de corrosión describe mejor este daño?",
+ ["Corrosión por picado, favorecida por el cloruro del agua de mar y la condición estancada","Corrosión uniforme, por la exposición prolongada al agua de mar fría","Corrosión intergranular, por sensibilización durante la fabricación del tubo","Agrietamiento por corrosión bajo tensión, por el peso del agua de mar"],
+ "Las cavidades pequeñas y profundas, con mínima pérdida general de espesor y en zonas de bajo flujo, junto con el cloruro del agua de mar, son el patrón característico del picado.",{s:"D301,D933"});
+MC("¿Qué parámetro numérico, calculado a partir de Cr, Mo, W y N, permite comparar la resistencia relativa al picado de distintos aceros inoxidables?",
+ ["PREN, el número equivalente de resistencia al picado","HAZ, la zona afectada por el calor de la soldadura","NPSH, la altura de succión positiva neta requerida","CPT, medido únicamente con un termómetro de contacto"],
+ "El PREN (Pitting Resistance Equivalent Number) se calcula como %Cr + 3.3(%Mo + 0.5%W) + 16%N, y es el parámetro de referencia para comparar numéricamente la resistencia relativa al picado entre aleaciones.",{s:"D1013"});
+VF("Los aceros inoxidables, como familia de materiales, resisten mejor la corrosión por grietas que el titanio y las aleaciones de alto níquel.",false,
+ "Falso. La guía señala lo contrario: los aceros inoxidables como familia son muy pobres resistiendo la corrosión por grietas, mientras el titanio y las aleaciones de alto níquel ofrecen la mejor resistencia.",{s:"D909"});
+SORT("Clasifica cada condición según si corresponde típicamente a corrosión por grietas o a corrosión por picado.",["Corrosión por grietas","Corrosión por picado"],[
+ ["Espacio confinado bajo un empaque absorbente",0],
+ ["Rayón superficial que rompe la película pasiva en una cara libre",1],
+ ["Depósito de suciedad bajo el cual queda agua estancada",0],
+ ["Inclusión no metálica que inicia el ataque en superficie libre",1]],
+ "La corrosión por grietas se asocia a espacios confinados; el picado se inicia en irregularidades puntuales de una superficie libre, como rayones o inclusiones.",{s:"D884,D963"});
+
+H("Bloque 4. Erosión, cavitación, impacto y fretting");
+MC("Un impulsor de bomba de lodos presenta surcos que siguen la dirección del flujo y picaduras en forma de herradura cerca de la succión. ¿Qué combinación de mecanismos describe mejor este daño?",
+ ["Corrosión por erosión, agravada por impacto (impingement) cerca de la succión","Corrosión por grietas, agravada por fatiga por corrosión en toda la superficie","Dezincificación, agravada por corrosión filiforme bajo un recubrimiento","Corrosión intergranular, agravada por fragilización por hidrógeno en el eje"],
+ "Los surcos que siguen el flujo son típicos de la erosión corrosión; las picaduras en forma de herradura cerca de la succión son la firma del impacto (impingement) por remolinos turbulentos.",{s:"D1159,D1203"});
+VF("Una alta dureza de un material siempre garantiza, por sí sola, una alta resistencia a la corrosión por erosión.",false,
+ "Falso. La guía advierte que una alta dureza no garantiza por sí sola una buena resistencia a la erosión corrosión; intervienen también el diseño y la película protectora del material.",{s:"D167"});
+MC("Una bomba que opera muy cerca de su NPSH requerido desarrolla picaduras irregulares en el impulsor, acompañadas de un ruido característico durante la operación. ¿Qué fenómeno explica mejor este daño?",
+ ["Cavitación, por el colapso de burbujas de vapor cuando la presión cae bajo la presión de vapor","Corrosión filiforme, por humedad atrapada bajo un recubrimiento interno","Corrosión por grietas, por el ajuste mecánico entre impulsor y eje","Dezincificación, por pérdida selectiva de zinc en el impulsor"],
+ "Operar cerca del NPSH requerido hace que la presión local caiga por debajo de la presión de vapor, formando burbujas que colapsan generando pulsos de presión muy altos: es la firma de la cavitación, coherente con el ruido característico.",{s:"D1161,D1164"});
+MC("Los pernos de una torre de aerogenerador, sometidos a vibración constante, muestran polvo fino rojizo y picaduras bajo la cabeza del perno, sin que las piezas se hayan movido de forma visible. ¿Qué fenómeno es más probable?",
+ ["Fretting, por microdeslizamientos cíclicos de muy baja amplitud debido a la vibración","Cavitación, por colapso de burbujas de vapor en la zona de apoyo del perno","Corrosión filiforme, por un defecto en la pintura de la placa de apoyo","Grafitización, por disolución preferencial del hierro en la placa de apoyo"],
+ "El polvo fino de óxido junto a picaduras en una zona de apoyo aparentemente inmóvil, bajo vibración constante, es la firma clásica del fretting.",{s:"D1267,D1324"});
+VF("El fretting puede actuar como iniciador de grietas de fatiga, adelantando una fractura catastrófica frente a lo previsto en el diseño.",true,
+ "Verdadero. La guía advierte que el fretting es especialmente peligroso porque actúa como iniciador de grietas de fatiga.",{s:"D1325"});
+ORDER("Ordena estas tres medidas según la secuencia lógica recomendada para reducir la erosión corrosión en una tubería de alto flujo, de la más simple y temprana a la más costosa.",
+ ["Filtrar o decantar sólidos en suspensión del fluido","Aumentar el diámetro de la tubería para bajar la velocidad y lograr flujo laminar","Revestir con un segundo metal resistente en las zonas de mayor desgaste, cuidando no generar corrosión galvánica"],
+ "Primero se ataca el ambiente (filtrar sólidos), luego el diseño general (aumentar diámetro), y como medida más localizada y costosa se revisten las zonas críticas, vigilando no introducir un nuevo problema de corrosión galvánica con el metal de revestimiento.",{s:"D1222,D1253,D1257"});
+
+H("Bloque 5. Corrosión intergranular y lixiviación selectiva");
+MC("Una banda estrecha paralela a un cordón de soldadura en acero inoxidable austenítico presenta ataque localizado, mientras el cordón y el metal base permanecen casi intactos. ¿Qué fenómeno explica mejor este patrón?",
+ ["Corrosión intergranular por sensibilización, posiblemente knife-line attack en la zona afectada por el calor","Corrosión por picado, iniciada por una inclusión cerca del cordón de soldadura","Corrosión galvánica, por el contacto entre el cordón y el metal base","Cavitación, generada por el propio proceso de soldadura multipasada"],
+ "El calor de la soldadura puede sensibilizar el acero inoxidable austenítico, precipitando carburos de cromo en los límites de grano de la zona afectada por el calor; cuando se concentra en una banda estrecha junto al cordón, se llama knife-line attack.",{s:"D1357,D1365"});
+VF("Los grados L de acero inoxidable, como 304L o 316L, reducen el riesgo de sensibilización durante la soldadura frente a los grados estándar.",true,
+ "Verdadero. Los grados L tienen menos de 0.03 % de carbono, frente al 0.06-0.15 % de los grados estándar, lo que reduce la formación de carburos de cromo en los límites de grano.",{s:"D1370"});
+MC("Una válvula de latón amarillo se rompe con un esfuerzo moderado; la fractura muestra un color rojizo cobrizo y una estructura porosa, muy distinta del latón original. ¿Qué fenómeno explica mejor este daño?",
+ ["Dezincificación, con disolución preferencial del zinc dejando una matriz porosa de cobre","Grafitización, con disolución preferencial del hierro dejando un esqueleto de grafito","Corrosión por picado, con cavidades profundas formadas por el agua potable","Fatiga por corrosión, con fractura causada por ciclos de presión del agua"],
+ "El color rojizo cobrizo y la estructura porosa son la firma característica de la dezincificación: el zinc, menos noble, se disuelve preferencialmente dejando una matriz de cobre débil y porosa.",{s:"D1415,D1424"});
+VF("El uso de hierro nodular o maleable, en vez de hierro fundido gris, es una medida reconocida para evitar la grafitización en tuberías enterradas de agua.",true,
+ "Verdadero. La guía indica que el uso de hierro nodular o maleable es efectivo en evitar la grafitización, muy relevante en tuberías de agua de gran diámetro enterradas.",{s:"D1440"});
+MATCH("Relaciona cada término con el ejemplo de la guía al que corresponde.",[
+ ["Weld decay","Sensibilización de acero inoxidable por el calor de la soldadura"],
+ ["Dezincificación","Disolución preferencial del zinc en el latón amarillo"],
+ ["Grafitización","Disolución preferencial del hierro en hierro fundido gris"],
+ ["Knife-line attack","Ataque intergranular en una banda estrecha junto al cordón de soldadura"]],
+ "Cada término corresponde a un ejemplo específico de la guía: weld decay a la sensibilización general, el knife-line attack a la banda junto al cordón, y la dezincificación y grafitización a ejemplos clásicos de lixiviación selectiva.",{s:"D1362,D1371,D1415,D1436"});
+
+H("Bloque 6. Agrietamiento ambiental: SCC, fatiga por corrosión e hidrógeno");
+MC("Un tanque de acero al carbono con una solución cáustica concentrada presenta grietas finas y frágiles cerca de una boquilla soldada, mientras el resto del tanque permanece casi intacto. ¿Qué fenómeno describe mejor este daño?",
+ ["Agrietamiento por corrosión bajo tensión (SCC), por el esfuerzo residual de la soldadura y el ambiente cáustico","Corrosión uniforme avanzada, por la exposición prolongada a la solución cáustica","Corrosión por picado, por la acumulación de cloruros cerca de la boquilla","Cavitación local, causada por el flujo de llenado del tanque"],
+ "El acero al carbono en soluciones cáusticas es una combinación clásica de SCC; el esfuerzo residual de la soldadura junto a la boquilla aporta el componente de tensión necesario para iniciar y propagar las grietas frágiles.",{s:"D1458,D1876"});
+VF("La protección catódica, aunque es efectiva contra el SCC, debe aplicarse con control porque puede favorecer la fragilización por hidrógeno.",true,
+ "Verdadero. La guía advierte explícitamente esta precaución al hablar de la prevención del SCC.",{s:"D1884,D1885"});
+MC("Un riser costa afuera, sometido a ciclos continuos de flexión por el oleaje, muestra múltiples grietas paralelas, transgranulares y sin ramificación, cerca de una unión soldada. ¿Qué fenómeno describe mejor este patrón?",
+ ["Fatiga por corrosión, por la combinación de esfuerzo cíclico y ambiente marino","Agrietamiento por corrosión bajo tensión, por su patrón ramificado tipo rayo","Corrosión por grietas, por solución estancada bajo una brida cercana","Dezincificación, por disolución preferencial de un elemento de aleación"],
+ "Las grietas transgranulares, múltiples, paralelas y sin ramificación, bajo esfuerzo cíclico constante, corresponden al patrón característico de la fatiga por corrosión, distinto del patrón ramificado tipo rayo del SCC.",{s:"D1897,D1964"});
+VF("A diferencia de la fatiga mecánica pura, en la fatiga por corrosión no existe un verdadero límite de esfuerzo de vida infinita.",true,
+ "Verdadero. En ambiente corrosivo, el nivel de esfuerzo de vida infinita se reduce o se elimina, a diferencia de la fatiga puramente mecánica.",{s:"D101,D102"});
+MC("Un perno de acero de alta resistencia, recién electrodepositado con cadmio, falla de forma frágil y repentina a un esfuerzo muy por debajo de su esfuerzo de cedencia, sin ataque corrosivo visible. ¿Cuál es la causa más probable?",
+ ["Fragilización por hidrógeno, introducido durante el proceso de electrodepositado","Corrosión uniforme, por exposición prolongada a la atmósfera antes de instalarse","Corrosión por picado, iniciada por una inclusión no metálica en el acero","Dezincificación, por pérdida de zinc durante el electrodepositado"],
+ "El electrodepositado es una fuente reconocida de hidrógeno atómico; en aceros de alta resistencia, ese hidrógeno puede causar fractura frágil muy por debajo del esfuerzo de cedencia, sin ataque corrosivo visible.",{s:"D222,D227"});
+VF("Un tratamiento de horneado (baking) entre 100 y 150 °C puede remover el hidrógeno disuelto en un acero después de un proceso de electrodepositado.",true,
+ "Verdadero. La absorción de hidrógeno en metales es reversible, y el horneado a 100-150 °C es una medida reconocida para removerlo.",{s:"D2847,D2855"});
+VF("El ataque por hidrógeno con formación de metano en microvacíos de un acero al carbono es más probable por debajo de 200 °C que entre 250 y 600 °C.",false,
+ "Falso. Este ataque ocurre típicamente entre 250 y 600 °C; por debajo de 200 °C, el acero al carbono prácticamente no es atacado por hidrógeno gaseoso.",{s:"D2345,D2403"});
+FILL("Completa el texto con las palabras del recuadro.","El SCC necesita un esfuerzo de {tensión} y un ambiente {corrosivo} específico; la fatiga por corrosión ocurre con esfuerzo {cíclico} en casi cualquier ambiente.",["tensión","corrosivo","cíclico","compresivo","uniforme"],
+ "El SCC exige esfuerzo de tensión más un ambiente corrosivo específico; la fatiga por corrosión exige esfuerzo cíclico y puede darse en casi cualquier ambiente.",{s0:"D332,D1897"});
+MATCH("Relaciona cada combinación metal-ambiente con la forma de agrietamiento que favorece.",[
+ ["Acero inoxidable en cloruro caliente","SCC por cloruro"],
+ ["Latón en atmósfera de amoníaco","SCC en aleaciones de cobre"],
+ ["Acero de alta resistencia con hidrógeno disuelto","Fragilización por hidrógeno"],
+ ["Esfuerzo cíclico en ambiente corrosivo general","Fatiga por corrosión"]],
+ "Cada combinación corresponde a un escenario clásico de agrietamiento ambiental descrito en la guía.",{s:"D1456,D1460"});
+
+H("Bloque 7. Corrosión filiforme y MIC");
+MC("Una estructura de aluminio recubierta con poliuretano, en un ambiente marino cálido con humedad frecuente por encima del 60 %, desarrolla filamentos bajo la pintura desde un pequeño defecto del recubrimiento. ¿Qué fenómeno describe mejor este daño?",
+ ["Corrosión filiforme, favorecida por la alta humedad relativa y el defecto del recubrimiento","Corrosión microbiológicamente influenciada (MIC), por bacterias reductoras de sulfato","Corrosión por picado, iniciada por una inclusión no metálica en el aluminio","Grafitización, por presencia de grafito en la matriz de aluminio"],
+ "El patrón de filamentos que avanzan bajo la pintura desde un defecto, favorecido por humedad relativa alta en ambiente marino, es la firma característica de la corrosión filiforme.",{s:"D2899,D2918"});
+VF("La corrosión filiforme puede ocurrir directamente sobre metal desnudo, sin ningún recubrimiento ni pintura.",false,
+ "Falso. La corrosión filiforme ocurre siempre en metales pintados, iniciándose en un defecto de la capa de pintura.",{s:"D2903"});
+MC("Un tramo de tubería queda con residuos de agua tras una prueba hidráulica incompleta. Meses después se detecta picado acompañado de una biopelícula en esa zona. ¿Qué mecanismo explica mejor este daño?",
+ ["Corrosión microbiológicamente influenciada (MIC), favorecida por el agua residual no drenada","Corrosión filiforme, favorecida por un defecto en el recubrimiento interno","Corrosión por erosión, favorecida por la alta velocidad del agua durante la prueba","Grafitización, favorecida por el contenido de carbono del acero"],
+ "El agua residual no drenada tras la prueba hidráulica es justo la condición que la guía menciona como origen frecuente de MIC, al permitir la formación de una biopelícula.",{s:"D3029,D3030"});
+VF("Las bacterias reductoras de sulfato, responsables de buena parte de la MIC en aceros suaves, son de tipo aeróbico y requieren oxígeno para activarse.",false,
+ "Falso. Las bacterias reductoras de sulfato son anaeróbicas, es decir, no requieren oxígeno para su actividad corrosiva.",{s:"D3002"});
+MC("¿Cuál de las siguientes condiciones de temperatura y pH favorece con mayor probabilidad la aparición de MIC en un medio acuoso, según la guía?",
+ ["Temperatura de 15 a 45 °C y pH de 6 a 8","Temperatura por encima de 80 °C y pH menor a 2","Temperatura por debajo de 0 °C y pH mayor a 12","Temperatura constante de 100 °C en cualquier valor de pH"],
+ "La guía indica que la MIC se favorece en un rango de temperatura de 15 a 45 °C y pH de 6 a 8 en un medio acuoso, condiciones moderadas y no extremas.",{s:"D3018"});
+
+H("Bloque 8. Prevención integral y normas");
+MC("Entre las siguientes medidas, ¿cuál corresponde al frente de \"selección de materiales\" y no al de diseño o ambiente?",
+ ["Cambiar a un acero inoxidable con mayor PREN para resistir mejor el picado","Aumentar el diámetro de una tubería para reducir la velocidad del flujo","Filtrar el agua para retirar sólidos en suspensión antes de que entre al sistema","Reducir la concentración de cloruros mediante un tratamiento previo del agua"],
+ "Elegir una aleación con mayor PREN es una decisión de selección de materiales; las otras opciones corresponden a diseño o a modificación del ambiente.",{s:"D1013"});
+VF("La norma ASTM A-262 se usa específicamente para evaluar la susceptibilidad a la corrosión intergranular por sensibilización en aceros inoxidables.",true,
+ "Verdadero. ASTM A-262 es la norma de referencia citada para evaluar la corrosión intergranular en aceros inoxidables.",{s:"D1393"});
+MC("¿Cuál de las siguientes normas se asocia, según la guía, a la evaluación de la corrosión filiforme en recubrimientos orgánicos?",
+ ["ASTM D 2803","ASTM A-262","NACE TM0212","ASTM G48"],
+ "ASTM D 2803 es la norma citada específicamente para evaluar la resistencia a la corrosión filiforme en recubrimientos orgánicos sobre metales.",{s:"D2952"});
+SORT("Clasifica cada medida de prevención según el frente general al que pertenece principalmente.",["Diseño","Selección de materiales","Recubrimientos"],[
+ ["Aumentar el diámetro de tubería para bajar la velocidad",0],
+ ["Elegir una aleación con mayor PREN",1],
+ ["Aplicar dos capas de epoxi y dos de poliuretano",2],
+ ["Diseñar para fácil reemplazo del ánodo de sacrificio",0],
+ ["Usar un grado L de acero inoxidable",1],
+ ["Aplicar un revestimiento de zinc por aspersión",2]],
+ "Diseño: geometría, diámetros y facilidad de reemplazo. Selección de materiales: cambios de composición de la aleación. Recubrimientos: capas protectoras aplicadas sobre la superficie.",{s:"D1007,D1067"});
+
+H("Bloque 9. Casos de aplicación integrados");
+MC("Un operario reporta que una válvula de bronce en una línea de agua de mar, tras varios años, se rompe fácilmente al aplicar un esfuerzo moderado y muestra en la fractura una zona rojiza y porosa. El bronce es una aleación de cobre con estaño, pero en este caso el fabricante usó un bronce con un alto contenido de aluminio. ¿Qué fenómeno es más probable, según lo visto sobre lixiviación selectiva?",
+ ["Lixiviación selectiva del aluminio, ya que el aluminio es anódico frente al cobre en esa aleación","Dezincificación clásica, idéntica a la del latón amarillo con alto contenido de zinc","Corrosión uniforme pareja en toda la superficie de la válvula de bronce","Corrosión filiforme bajo una capa de pintura protectora de la válvula"],
+ "La guía señala que el bronce de aluminio también sufre lixiviación selectiva, porque el aluminio es anódico frente al cobre en esa aleación, de forma análoga a cómo el zinc lo es frente al cobre en el latón.",{s:"D1412,D1413"});
+MC("Una plataforma marina decide instalar ánodos de sacrificio de zinc junto a una estructura de acero sumergida, en vez de dejar el acero sin protección. ¿Qué principio de la corrosión galvánica se está aprovechando de forma deliberada?",
+ ["El zinc, menos noble que el acero, se vuelve ánodo y se sacrifica para proteger al acero (cátodo)","El zinc, más noble que el acero, se vuelve cátodo y protege al acero actuando como ánodo","El acero se vuelve automáticamente inmune a la corrosión al estar cerca de cualquier otro metal","El zinc elimina por completo la necesidad de cualquier recubrimiento adicional en el acero"],
+ "El principio es exactamente el de la corrosión galvánica: el zinc, menos noble que el acero, se convierte deliberadamente en el ánodo de la celda y se sacrifica, mientras el acero actúa como cátodo protegido.",{s:"D205"});
+VF("Un ingeniero que debe diagnosticar una falla de corrosión en campo puede apoyarse en la clasificación en tres grupos para decidir qué tipo de examen necesita: visual, un medio adicional, o verificación microscópica.",true,
+ "Verdadero. Precisamente esa es la utilidad práctica de la clasificación en tres grupos: orienta qué nivel de examen (visual, con medios adicionales o microscópico) se necesita para confirmar la forma de corrosión sospechada.",{s:"D3"});
+OPEN("Un ingeniero recién egresado debe elegir, para una nueva línea de proceso con agua salobre y sólidos en suspensión, al menos tres medidas de prevención de corrosión que cubran frentes distintos (diseño, materiales, recubrimientos o ambiente). Redacta su propuesta con un ejemplo concreto para cada frente elegido.",
+ ["Elige al menos tres frentes distintos entre diseño, materiales, recubrimientos y ambiente","Da un ejemplo concreto y coherente con el escenario de agua salobre y sólidos en suspensión para cada frente","Explica brevemente por qué combinar varios frentes reduce mejor el riesgo que depender de uno solo"],
+ "<p>Una propuesta sólida combina frentes distintos: en <b>diseño</b>, diámetros generosos y codos aerodinámicos para reducir turbulencia; en <b>materiales</b>, una aleación con buen PREN frente al cloruro del agua salobre; en <b>recubrimientos</b>, un revestimiento interno resistente a la abrasión por los sólidos en suspensión; y en <b>ambiente</b>, filtrar esos sólidos antes de que entren al sistema.</p><p>Combinar varios frentes reduce el riesgo porque cada forma de corrosión responde mejor a un tipo distinto de control; depender de uno solo deja descubiertos los demás mecanismos posibles.</p>",
+ {s:"D3078"});
+MC("Un recipiente de proceso, inspeccionado después de una falla, muestra evidencia de picado profundo justo en el fondo, zona donde históricamente se acumula agua con sedimento y baja renovación. ¿Qué dos formas de corrosión deberían investigarse juntas antes de concluir el diagnóstico?",
+ ["Corrosión por picado y corrosión microbiológicamente influenciada (MIC), por el sedimento y el agua estancada","Corrosión uniforme y corrosión galvánica, por tratarse siempre de metales distintos","Fatiga por corrosión y corrosión filiforme, por tratarse siempre de zonas pintadas","Exfoliación y cavitación, por tratarse siempre de aleaciones de aluminio"],
+ "El sedimento y el agua estancada en el fondo son condiciones que favorecen tanto el picado clásico como la MIC, ya que los depósitos protegen biopelículas que pueden iniciar o agravar el picado; por eso ambas hipótesis deben investigarse juntas.",{s:"D3021,D3029"});
+VF("En un examen que mezcla teoría y casos de aplicación, identificar primero la forma de corrosión y después justificar con el mecanismo correcto suele ser más confiable que adivinar directamente la respuesta de memoria.",true,
+ "Verdadero. La estrategia recomendada en toda la guía es identificar el patrón de daño, relacionarlo con el mecanismo (ánodo/cátodo, esfuerzo, ambiente estancado, etc.) y solo después elegir la opción que mejor calce con ese razonamiento.",{s:"D3"});
+
+H("Bloque 10. Repaso final mixto");
+MC("Un cable de acero de un puente colgante presenta, al abrirlo para inspección, hebras internas rotas de forma prematura y un polvo rojizo fino entre los alambres que lo componen, sin ataque aparente en la superficie externa del cable. ¿Qué fenómeno explica mejor este patrón?",
+ ["Fretting, por el roce cíclico entre los hilos internos del cable al vibrar o flexionarse bajo carga","Cavitación, por el colapso de burbujas de vapor dentro del cable de acero","Corrosión filiforme, por un defecto en la pintura de la superficie externa","Grafitización, por disolución preferencial del hierro entre los hilos del cable"],
+ "Los hilos individuales de un cable de acero rozan entre sí cuando el cable se dobla o vibra bajo carga, lo que puede causar fretting y la rotura prematura de las hebras internas, coherente con el polvo rojizo fino observado.",{s:"D1314,D1317"});
+VF("La corrosión por erosión afecta con mayor frecuencia a metales de baja dureza que dependen de una película superficial protectora, como el aluminio, el plomo, el cobre y los aceros inoxidables.",true,
+ "Verdadero. La guía indica que los metales con baja dureza y que dependen de películas protectoras, como Al, Pb, Cu y los aceros inoxidables, son especialmente susceptibles a la erosión corrosión.",{s:"D1129,D1132"});
+MC("Un ingeniero debe decidir entre dos aceros inoxidables para una pieza que operará en agua de mar con riesgo de picado. El acero A tiene mayor contenido de cromo, molibdeno y nitrógeno que el acero B. Según el concepto de PREN, ¿cuál debería preferir?",
+ ["El acero A, porque un mayor PREN indica mayor resistencia esperada al picado","El acero B, porque un menor PREN siempre indica mayor resistencia al picado","Es indiferente, porque el PREN no tiene relación con la resistencia al picado","Ninguno de los dos, porque el PREN solo aplica a aleaciones de aluminio"],
+ "El PREN crece con el contenido de cromo, molibdeno y nitrógeno, y un PREN más alto indica, en general, una mejor resistencia esperada al picado; por eso el acero A, con mayor contenido de esos elementos, es la mejor opción.",{s:"D1013"});
+VF("El knife-line attack es un tipo de corrosión por picado que ocurre exclusivamente en aleaciones de aluminio soldadas.",false,
+ "Falso. El knife-line attack es un tipo específico de corrosión intergranular que ocurre en aceros inoxidables austeníticos estabilizados con titanio o niobio, en una banda estrecha junto al cordón de soldadura, no en aluminio.",{s:"D1371,D1372"});
+FILL("Completa el texto con las palabras del recuadro.","La tribocorrosión combina una carga {mecánica} con un ataque {corrosivo}; dentro de ella, la {cavitación} se produce por el colapso de burbujas de vapor y el {fretting} por microdeslizamientos cíclicos.",["mecánica","corrosivo","cavitación","fretting","picado"],
+ "La tribocorrosión combina carga mecánica y ataque corrosivo; la cavitación es el colapso de burbujas de vapor, y el fretting son microdeslizamientos cíclicos de baja amplitud.",{s0:"D1099,D1161,D1268"});
+MC("Una planta petroquímica reporta ampollas superficiales en un tanque de almacenamiento, asociadas a micro-burbujas de hidrógeno a muy alta presión dentro del acero. ¿Qué forma de daño por hidrógeno describe mejor este caso?",
+ ["Ampollamiento por hidrógeno (hydrogen blistering), frecuente en la industria petrolera","Ataque por hidrógeno con formación de metano y descarburización a alta temperatura","Fragilización por hidrógeno en una aleación de titanio con hidruros frágiles","Corrosión por picado agravada por hidrógeno disuelto en el acero"],
+ "El ampollamiento por hidrógeno es causado por micro-burbujas de hidrógeno a presión extremadamente alta dentro del metal, y es particularmente frecuente en tanques de almacenamiento y procesos de refinación de petróleo.",{s:"D2030,D2036"});
+VF("Procesar un acero con cordones de soldadura de bajo hidrógeno es una práctica reconocida para reducir el riesgo de fragilización por hidrógeno.",true,
+ "Verdadero. El control de procesos de decapado, electrodepositado y soldadura, usando técnicas de bajo hidrógeno o libres de hidrógeno, es una de las medidas de prevención reconocidas.",{s:"D2894,D2896"});
+
+boot();
+</script>
+
+</body></html>
